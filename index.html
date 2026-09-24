@@ -51,12 +51,13 @@
           loop
           playsinline
           preload="metadata"
-          poster="assets/media/hero-poster.jpg"
+          poster="assets/media/rafael-hero-poster.jpg"
           data-track-video="hero"
           aria-hidden="true"
           tabindex="-1"
         >
-          <source src="assets/media/hero.mp4" type="video/mp4" />
+          <source media="(max-width: 767px)" src="assets/media/rafael-hero-mobile.mp4" type="video/mp4" />
+          <source src="assets/media/rafael-hero-desktop.mp4" type="video/mp4" />
         </video>
         <div class="hero__veil" aria-hidden="true"></div>
         <div class="hero__top container">
