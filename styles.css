@@ -899,6 +899,7 @@ p {
 }
 
 .doctor__portrait img,
+.doctor__portrait video,
 .doctor__portrait-placeholder {
   width: 100%;
   aspect-ratio: 0.82;
@@ -906,6 +907,10 @@ p {
 
 .doctor__portrait img {
   filter: saturate(0.6) contrast(1.08);
+}
+
+.doctor__portrait img,
+.doctor__portrait video {
   object-fit: cover;
   object-position: center 17%;
 }
