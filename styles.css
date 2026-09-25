@@ -746,6 +746,14 @@ p {
   object-fit: cover;
 }
 
+.portrait-video--testimonial {
+  width: min(100%, 560px);
+}
+
+.portrait-video--testimonial video {
+  aspect-ratio: 16 / 9;
+}
+
 .portrait-video--muted video {
   filter: saturate(0.72) contrast(1.05);
 }
