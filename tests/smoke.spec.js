@@ -3,8 +3,8 @@ const { test, expect } = require("@playwright/test");
 test("renders the complete landing page without horizontal overflow", async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem("meta_ads_consent_v1", "rejected"));
   await page.goto("/?utm_source=ig&utm_medium=social&utm_content=qa");
-  await expect(page).toHaveTitle(/Sidney Colares/);
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("Rinoplastia");
+  await expect(page).toHaveTitle(/Rafael Dias/);
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Harmonização Full Face");
   await expect(page.locator("main section")).toHaveCount(7);
 
   for (const width of [360, 390, 768, 1024, 1440]) {
@@ -57,7 +57,7 @@ test("opens, validates and advances the accessible lead form", async ({ page }) 
 
   await expect(page.locator("[name='utm_source']")).toHaveValue("ig");
   await expect(page.locator("[name='utm_campaign']")).toHaveValue("smoke");
-  await page.getByLabel("Quero agendar uma avaliação de rinoplastia").check();
+  await page.getByLabel("Quero agendar uma avaliação de full face").check();
   await page.locator("[name='privacy_consent']").check();
   const submit = page.locator(".form-submit");
   await expect(submit).toBeVisible();
@@ -71,7 +71,7 @@ test("opens, validates and advances the accessible lead form", async ({ page }) 
   expect(storedLead).toMatchObject({
     phone: "(94) 99136-0408",
     city: "Marabá",
-    interest: "Quero agendar uma avaliação de rinoplastia",
+    interest: "Quero agendar uma avaliação de full face",
     privacy_consent: true,
     utm_source: "ig",
     utm_campaign: "smoke",
@@ -103,7 +103,7 @@ test("keeps WhatsApp independent when lead storage fails", async ({ page }) => {
   await page.locator(".form-next").click();
   await page.locator("#lead-city").fill("Marabá");
   await page.locator(".form-next").click();
-  await page.getByLabel("Quero tirar dúvidas sobre rinoplastia").check();
+  await page.getByLabel("Quero tirar dúvidas sobre full face").check();
   await page.locator("[name='privacy_consent']").check();
   await page.locator(".form-submit").click();
 

@@ -316,7 +316,7 @@
       .map((key) => `${key}: ${values[key]}`)
       .join(" | ");
     const message = [
-      "Olá! Acessei a página de rinoplastia do Dr. Sidney Colares e gostaria de falar com a equipe.",
+      "Olá! Acessei a página de Full Face do Dr. Rafael Dias e gostaria de falar com a equipe.",
       "",
       `Nome: ${values.name}`,
       `WhatsApp informado: ${values.phone}`,
@@ -354,7 +354,7 @@
       if (!result.eventId) throw new Error("Lead API did not return an event ID");
 
       track("generate_lead", { form: "evaluation", destination: "database" });
-      window.fbq?.("track", "Lead", { content_name: "Avaliação de rinoplastia" }, { eventID: result.eventId });
+      window.fbq?.("track", "Lead", { content_name: "Avaliação de full face" }, { eventID: result.eventId });
       track("lead_handoff_whatsapp", { form: "evaluation", step_count: steps.length });
       formStatus.textContent = "Dados registrados. O WhatsApp foi aberto.";
     } catch (error) {
