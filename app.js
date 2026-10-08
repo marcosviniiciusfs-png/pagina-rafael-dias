@@ -33,7 +33,7 @@
     return fbclid ? `fb.1.${Math.floor(Date.now() / 1000)}.${fbclid}` : "";
   };
 
-  const whatsappNumber = String(config.whatsappNumber || "5594991360408").replace(/\D/g, "");
+  const whatsappNumber = String(config.whatsappNumber || "559491830101").replace(/\D/g, "");
   document.querySelectorAll(".js-whatsapp").forEach((link) => {
     link.href = `https://wa.me/${whatsappNumber}`;
     link.addEventListener("click", () => {

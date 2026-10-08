@@ -65,7 +65,7 @@ test("opens, validates and advances the accessible lead form", async ({ page }) 
   expect(await submit.textContent()).not.toContain("WhatsApp");
   expect(storedLead).toBeUndefined();
   await submit.click();
-  await expect.poll(() => page.evaluate(() => window.__openedWhatsAppUrl || "")).toContain("https://wa.me/5594991360408");
+  await expect.poll(() => page.evaluate(() => window.__openedWhatsAppUrl || "")).toContain("https://wa.me/559491830101");
   await expect.poll(() => storedLead?.name).toBe("Paciente Teste");
   releaseLeadResponse();
   expect(storedLead).toMatchObject({
@@ -108,7 +108,7 @@ test("keeps WhatsApp independent when lead storage fails", async ({ page }) => {
   await page.locator(".form-submit").click();
 
   await expect(page.locator(".form-status")).toContainText("Tente novamente");
-  await expect.poll(() => page.evaluate(() => window.__openedWhatsAppUrl || "")).toContain("https://wa.me/5594991360408");
+  await expect.poll(() => page.evaluate(() => window.__openedWhatsAppUrl || "")).toContain("https://wa.me/559491830101");
 });
 
 test("loads Meta Pixel and PageView immediately", async ({ page }) => {

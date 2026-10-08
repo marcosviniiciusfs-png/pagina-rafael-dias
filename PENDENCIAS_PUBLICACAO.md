@@ -6,7 +6,7 @@ Este arquivo separa o que já funciona tecnicamente do que ainda depende de conf
 
 - Confirmar por certidão os registros exibidos: `CRO-MG 64394`, `CRO-PA 4271` e `CRO-TO 4432`. O número do Pará aparece de forma divergente em fontes públicas; a versão atual usa `4271`, presente no perfil profissional e nas publicações oficiais.
 - Confirmar a forma aprovada de apresentação da especialidade. A versão atual usa “cirurgião-dentista e traumatologista bucomaxilofacial”, sem apresentá-lo como médico, cirurgião plástico ou otorrinolaringologista.
-- Confirmar o WhatsApp principal `+55 94 99136-0408`.
+- WhatsApp principal configurado: `+55 94 9183-0101`.
 - A logo oficial em PNG foi fornecida e aplicada. Solicitar também o arquivo vetorial original para futuras ampliações e fornecer um retrato aprovado do profissional; enquanto não houver retrato, o bloco “Sobre” exibe a marca oficial.
 
 Consultas públicas recomendadas: [busca de profissionais do CFO](https://busca-profissionais.cfo.org.br/) e [consulta de inscritos do CRO-PA](https://cro-pa.implanta.net.br/ServicosOnline/Publico/ConsultaInscritos).
