@@ -727,12 +727,12 @@ p {
 
 .portrait-video--muted video {
   filter: saturate(0.72) contrast(1.05);
-  transform: rotate(90deg) scale(1.79);
-  transform-origin: center;
+  aspect-ratio: auto;
+  object-fit: contain;
 }
 
 .portrait-video--muted {
-  overflow: hidden;
+  width: min(100%, 760px);
 }
 
 .media-index {
