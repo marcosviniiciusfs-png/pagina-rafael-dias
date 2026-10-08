@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Criativo — organize templates e prepare vídeos para criação em lote." />
+    <title>Criativo | Rafael Dias</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="criativo.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#criador">Pular para o criador</a>
+    <main class="app-shell">
+      <header class="app-header">
+        <a class="brand" href="index.html" aria-label="Voltar para o site Rafael Dias">
+          <span class="brand-mark" aria-hidden="true">RD</span>
+          <span>Criativo</span>
+        </a>
+        <div class="connection-status" aria-label="Status da integração com Canva">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>Canva ainda não conectado</span>
+        </div>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">ESTÚDIO DE CONTEÚDO</p>
+        <h1 id="page-title">Crie variações sem recomeçar do zero.</h1>
+        <p>Escolha um template, adicione quantos vídeos precisar e organize a produção dos seus criativos em um único fluxo.</p>
+      </section>
+
+      <section id="criador" class="creator" aria-labelledby="creator-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">CRIADOR PRINCIPAL</p>
+            <h2 id="creator-title">Montar criativos</h2>
+          </div>
+          <p class="step-count" aria-live="polite"><span id="selected-count">0</span> vídeos na fila</p>
+        </div>
+
+        <div class="creator-grid">
+          <article class="panel template-panel" aria-labelledby="template-title">
+            <div class="panel-header">
+              <div>
+                <p class="field-label">ETAPA 1</p>
+                <h3 id="template-title">Escolha um template</h3>
+              </div>
+              <span class="required">Obrigatório</span>
+            </div>
+
+            <div class="template-grid" role="group" aria-label="Templates disponíveis">
+              <button class="template-card template-card--selected" type="button" data-template="Depoimento em destaque" aria-pressed="true">
+                <span class="template-preview preview-testimonial" aria-hidden="true"><i></i><b>DEPOIMENTO</b><em>01</em></span>
+                <span class="template-copy"><strong>Depoimento em destaque</strong><small>Vertical · 9:16</small></span>
+              </button>
+              <button class="template-card" type="button" data-template="Transformação full face" aria-pressed="false">
+                <span class="template-preview preview-before-after" aria-hidden="true"><i></i><b>ANTES<br>DEPOIS</b><em>02</em></span>
+                <span class="template-copy"><strong>Transformação full face</strong><small>Vertical · 9:16</small></span>
+              </button>
+              <button class="template-card" type="button" data-template="Conheça o especialista" aria-pressed="false">
+                <span class="template-preview preview-expert" aria-hidden="true"><i></i><b>CONHEÇA<br>O ESPECIALISTA</b><em>03</em></span>
+                <span class="template-copy"><strong>Conheça o especialista</strong><small>Vertical · 9:16</small></span>
+              </button>
+              <button class="template-card" type="button" data-template="Pergunta e resposta" aria-pressed="false">
+                <span class="template-preview preview-question" aria-hidden="true"><i></i><b>PERGUNTE<br>AO DR.</b><em>04</em></span>
+                <span class="template-copy"><strong>Pergunta e resposta</strong><small>Vertical · 9:16</small></span>
+              </button>
+            </div>
+          </article>
+
+          <article class="panel upload-panel" aria-labelledby="upload-title">
+            <div class="panel-header">
+              <div>
+                <p class="field-label">ETAPA 2</p>
+                <h3 id="upload-title">Adicione os vídeos</h3>
+              </div>
+              <span class="format-note">MP4, MOV ou WebM</span>
+            </div>
+
+            <label class="dropzone" for="video-input">
+              <input id="video-input" type="file" accept="video/mp4,video/quicktime,video/webm,video/*" multiple />
+              <span class="upload-icon" aria-hidden="true">+</span>
+              <span class="dropzone-title">Selecionar vídeos</span>
+              <span class="dropzone-copy">Você pode escolher vários arquivos de uma vez.</span>
+            </label>
+
+            <div class="file-list-wrap">
+              <div class="file-list-heading">
+                <span>Fila de vídeos</span>
+                <button id="clear-files" class="text-button" type="button" hidden>Limpar fila</button>
+              </div>
+              <ul id="file-list" class="file-list" aria-live="polite">
+                <li class="empty-state">Os vídeos selecionados aparecerão aqui.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <article class="panel production-panel" aria-labelledby="production-title">
+          <div>
+            <p class="field-label">ETAPA 3</p>
+            <h3 id="production-title">Preparar produção</h3>
+            <p class="production-copy">Template escolhido: <strong id="chosen-template">Depoimento em destaque</strong>. Cada vídeo receberá sua própria cópia do mesmo layout.</p>
+          </div>
+          <div class="production-actions">
+            <p id="integration-note" class="integration-note">Conecte o Canva para criar os arquivos finais.</p>
+            <button id="create-button" class="primary-button" type="button" disabled>Preparar <span id="create-count">0</span> criativos</button>
+          </div>
+          <p id="creation-message" class="creation-message" aria-live="polite"></p>
+        </article>
+      </section>
+
+      <section class="library" aria-labelledby="library-title">
+        <div class="section-heading section-heading--library">
+          <div>
+            <p class="eyebrow">SESSÃO SEPARADA</p>
+            <h2 id="library-title">Criativo</h2>
+          </div>
+          <p>Biblioteca de referências e templates padrão para a equipe.</p>
+        </div>
+        <div class="library-grid">
+          <article class="library-item"><span class="library-number">01</span><h3>Depoimentos</h3><p>Layouts para relatos, resultados percebidos e chamadas de avaliação.</p></article>
+          <article class="library-item"><span class="library-number">02</span><h3>Casos clínicos</h3><p>Estruturas de antes e depois com espaço para informação responsável.</p></article>
+          <article class="library-item"><span class="library-number">03</span><h3>Especialista</h3><p>Apresentações do profissional, dúvidas frequentes e bastidores.</p></article>
+        </div>
+      </section>
+
+      <aside class="integration-card" aria-labelledby="integration-title">
+        <div>
+          <p class="eyebrow">INTEGRAÇÃO</p>
+          <h2 id="integration-title">Canva via MCP</h2>
+        </div>
+        <p>A interface já está preparada para enviar cada vídeo ao template escolhido. Para criar, duplicar e exportar os designs de verdade, ainda precisamos conectar a credencial e o endpoint do Canva MCP a este projeto.</p>
+      </aside>
+    </main>
+    <script src="criativo.js" defer></script>
+  </body>
+</html>
