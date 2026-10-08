@@ -387,6 +387,7 @@ p {
 
 .hero__content h1 {
   max-width: 860px;
+  color: #fff;
   font-size: clamp(58px, 5.4vw, 78px);
   line-height: 0.94;
 }
