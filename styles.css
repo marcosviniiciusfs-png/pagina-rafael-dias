@@ -722,7 +722,7 @@ p {
 
 .portrait-video--testimonial video {
   aspect-ratio: 9 / 16;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .portrait-video--muted video {
