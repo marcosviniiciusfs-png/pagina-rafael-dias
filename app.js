@@ -36,6 +36,20 @@
     update();
   });
 
+  const cases = [
+    ["assets/instituto-rafael/case-before-01.png", "assets/instituto-rafael/case-after-01.png"],
+    ["assets/instituto-rafael/case-before-02.png", "assets/instituto-rafael/case-after-02.png"],
+    ["assets/instituto-rafael/case-before-03.png", "assets/instituto-rafael/case-after-03.png"],
+  ];
+  document.querySelectorAll("[data-case]").forEach((button) => button.addEventListener("click", () => {
+    const selected = Number(button.dataset.case);
+    const container = document.querySelector(".result-card");
+    if (!container || !cases[selected]) return;
+    container.querySelector("[data-before-image]").src = cases[selected][0];
+    container.querySelector("[data-after]").src = cases[selected][1];
+    document.querySelectorAll("[data-case]").forEach((choice) => choice.classList.toggle("is-active", choice === button));
+  }));
+
   const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
     if (entry.isIntersecting) {
       entry.target.classList.add("is-visible");

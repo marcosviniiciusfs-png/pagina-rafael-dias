@@ -1,0 +1,33 @@
+{
+  "$description": "Tokens do Instituto Dr. Rafael Dias, derivados da referência visual premium escura.",
+  "color": {
+    "primitive": {
+      "ink": { "$type": "color", "$value": "#080907", "$description": "Preto quente de fundo." },
+      "surface": { "$type": "color", "$value": "#12130f", "$description": "Superfície elevada." },
+      "surfaceAlt": { "$type": "color", "$value": "#191a15", "$description": "Superfície de card." },
+      "text": { "$type": "color", "$value": "#f1eee6", "$description": "Texto principal claro." },
+      "muted": { "$type": "color", "$value": "#a5a094", "$description": "Texto de apoio." },
+      "gold": { "$type": "color", "$value": "#c9a348", "$description": "Acento dourado principal." },
+      "goldSoft": { "$type": "color", "$value": "#e1c56e", "$description": "Acento dourado claro." }
+    },
+    "semantic": {
+      "background": { "$type": "color", "$value": "{color.primitive.ink}", "$description": "Fundo principal." },
+      "surface": { "$type": "color", "$value": "{color.primitive.surface}", "$description": "Fundos de componente." },
+      "foreground": { "$type": "color", "$value": "{color.primitive.text}", "$description": "Texto sobre superfícies escuras." },
+      "accent": { "$type": "color", "$value": "{color.primitive.gold}", "$description": "Ações e detalhes de marca." }
+    },
+    "component": {
+      "buttonPrimary": { "$type": "color", "$value": "{color.semantic.accent}", "$description": "CTA primário." },
+      "card": { "$type": "color", "$value": "{color.semantic.surface}", "$description": "Card de conteúdo." }
+    }
+  },
+  "spacing": {
+    "base": { "$type": "dimension", "$value": "4px", "$description": "Unidade base." },
+    "section": { "$type": "dimension", "$value": "144px", "$description": "Ritmo vertical desktop." },
+    "sectionMobile": { "$type": "dimension", "$value": "88px", "$description": "Ritmo vertical mobile." }
+  },
+  "radius": {
+    "card": { "$type": "dimension", "$value": "18px", "$description": "Cantos suaves dos cards." },
+    "pill": { "$type": "dimension", "$value": "999px", "$description": "CTAs e etiquetas." }
+  }
+}
