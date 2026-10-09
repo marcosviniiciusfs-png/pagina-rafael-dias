@@ -1,0 +1,11 @@
+/* Ajustes de legibilidade e movimento do hero. */
+.hero-motion{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;opacity:.19;filter:sepia(.8) saturate(1.25) brightness(.42) contrast(1.1);mix-blend-mode:screen;pointer-events:none}
+.hero:after{z-index:1}.hero-glow,.hero-dust{z-index:1}.hero-dust{animation:hero-particles 16s linear infinite;will-change:transform}.hero-grid{z-index:2}
+@keyframes hero-particles{0%{transform:translate3d(0,0,0) rotate(0deg)}50%{transform:translate3d(-28px,42px,0) rotate(9deg)}100%{transform:translate3d(0,0,0) rotate(0deg)}}
+.header{gap:18px}.patient-link{font-size:9px;color:var(--gold)}
+.case-choice{min-height:68px;grid-template-columns:minmax(0,1fr) minmax(128px,168px) 24px;grid-template-rows:auto;align-items:center;column-gap:16px;padding:14px 18px}
+.case-choice b{grid-column:1;font-size:9px;letter-spacing:.17em;color:#fff;white-space:nowrap}.case-choice small{grid-column:2;font-size:8px;letter-spacing:.08em;color:#fff;line-height:1.25;white-space:nowrap}.case-choice span{grid-column:3;grid-row:1;font-size:19px}
+.footer{padding-top:68px}.footer h3{font-size:9px}.footer-grid p,.footer-grid a:not(.logo){color:#f1eee6;font-size:11px;line-height:1.75}.footer-grid .newsletter{font-size:10px}.footer-bottom{color:#f1eee6;font-size:8px;line-height:1.6}
+@media(max-width:900px){.header{justify-content:space-between}.patient-link,.header-button{display:inline-flex}.patient-link{margin-left:auto;font-size:8px}.header-button{font-size:8px}.case-choice{grid-template-columns:minmax(0,1fr) 22px;grid-template-rows:auto auto;row-gap:5px;min-height:76px}.case-choice b{grid-column:1;grid-row:1;font-size:9px}.case-choice small{grid-column:1;grid-row:2;font-size:8px;white-space:normal}.case-choice span{grid-column:2;grid-row:span 2}.footer-grid p,.footer-grid a:not(.logo){font-size:12px}.footer-bottom{font-size:8px}}
+@media(max-width:480px){.patient-link{display:none}.case-choice{grid-template-columns:minmax(0,1fr) 20px}.case-choice b{font-size:8px}.case-choice small{font-size:7px}.footer-grid p,.footer-grid a:not(.logo){font-size:12px}}
+@media(prefers-reduced-motion:reduce){.hero-motion{display:none}.hero-dust{animation:none}}

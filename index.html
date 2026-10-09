@@ -12,21 +12,19 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" /><script src="config.js" defer></script><script src="app.js" defer></script>
+  <link rel="stylesheet" href="styles.css" /><link rel="stylesheet" href="overrides.css" /><script src="config.js" defer></script><script src="app.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Ir para conteúdo</a>
   <header class="header" data-header>
     <a class="logo" href="#inicio" aria-label="Instituto Dr. Rafael Dias"><span>RD</span><b>INSTITUTO</b><small>RAFAEL DIAS</small></a>
-    <nav class="nav" aria-label="Navegação"><a href="#servicos">Serviços</a><a href="#resultados">Resultados</a><a href="#metodo">Método</a><a href="#depoimentos">Depoimentos</a><a href="#laser">Depilação laser</a><a href="#mentoria">Mentoria</a></nav>
     <a class="patient-link" href="#contato">Portal do paciente</a>
     <a class="header-button js-whatsapp" href="https://wa.me/559491830101" data-whatsapp-position="header" target="_blank" rel="noopener">Agendar</a>
-    <button class="menu-button" type="button" data-menu-button aria-expanded="false" aria-controls="mobile-nav"><i></i><i></i><span class="sr-only">Abrir menu</span></button>
   </header>
-  <nav id="mobile-nav" class="mobile-nav" data-mobile-menu hidden><a href="#servicos">Serviços</a><a href="#resultados">Resultados</a><a href="#metodo">Método</a><a href="#depoimentos">Depoimentos</a><a class="js-whatsapp" href="https://wa.me/559491830101" data-whatsapp-position="menu" target="_blank" rel="noopener">Agendar consulta</a></nav>
   <main id="conteudo">
     <section class="hero" id="inicio">
-      <div class="hero-glow"></div><div class="hero-dust"></div>
+      <video class="hero-motion" autoplay muted loop playsinline preload="metadata" poster="assets/instituto-rafael/background.png" aria-hidden="true"><source src="assets/instituto-rafael/hero-video.mp4" type="video/mp4" /></video>
+      <div class="hero-glow"></div><div class="hero-dust" aria-hidden="true"></div>
       <div class="shell hero-grid">
         <div class="hero-copy reveal"><p class="kicker">ESTÉTICA AVANÇADA · PARÁ</p><h1>Dr. Rafael<br /><em>Dias</em></h1><p>Descubra a arte da transformação sutil. Sob a liderança do Dr. Rafael Dias, esculpimos sua melhor versão com precisão clínica e um toque de luxo incomparável.</p><div class="hero-actions"><a class="button button-gold js-whatsapp" href="https://wa.me/559491830101" data-whatsapp-position="hero" target="_blank" rel="noopener">Agendar consulta VIP <span>↗</span></a><a class="button button-text" href="#servicos">Ver especialidades</a></div></div>
         <div class="hero-visual reveal"><figure><img src="assets/instituto-rafael/hero-portrait.jpg" alt="Dr. Rafael Dias" /></figure><article class="hero-quote"><div>✦ ✦ ✦ ✦</div><p>“Minha rotina exige uma imagem impecável e natural. A precisão e o acompanhamento personalizado me surpreenderam.”</p><footer><span>MA</span><b>MARIA</b><small>INFLUENCIADORA E ADVOGADA</small></footer></article></div>
