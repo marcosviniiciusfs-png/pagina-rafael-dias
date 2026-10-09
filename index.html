@@ -1,382 +1,60 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#050505" />
-    <meta
-      name="description"
-      content="Harmonização Full Face em Parauapebas com o Dr. Rafael Dias. Conheça os casos clínicos e solicite uma avaliação."
-    />
-    <meta property="og:title" content="Harmonização Full Face em Parauapebas | Dr. Rafael Dias" />
-    <meta
-      property="og:description"
-      content="Avaliação facial completa para definir um plano compatível com a anatomia e os objetivos de cada paciente."
-    />
-    <meta property="og:type" content="website" />
-    <title>Harmonização Full Face em Parauapebas | Dr. Rafael Dias</title>
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Montserrat:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <script>document.documentElement.classList.add("js")</script>
-    <!-- Meta Pixel Code -->
-    <script>
-      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-      document,'script','https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '2258593511572731');
-      fbq('track', 'PageView');
-    </script>
-    <!-- End Meta Pixel Code -->
-    <script src="config.js" defer></script>
-    <script src="app.js" defer></script>
-  </head>
-  <body>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2258593511572731&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
-    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
-
-    <main id="conteudo">
-      <section class="hero" aria-labelledby="hero-title">
-        <video
-          class="hero__video"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-          poster="assets/media/rafael-hero-poster.jpg"
-          data-track-video="hero"
-          aria-hidden="true"
-          tabindex="-1"
-        >
-          <source media="(max-width: 767px)" src="assets/media/rafael-hero-mobile.mp4" type="video/mp4" />
-          <source src="assets/media/rafael-hero-desktop.mp4" type="video/mp4" />
-        </video>
-        <div class="hero__veil" aria-hidden="true"></div>
-        <div class="hero__top container">
-          <a class="brand" href="#conteudo" aria-label="Dr. Rafael Dias, início">
-            <img class="brand__logo" src="assets/brand/logo-sculptor-rd.png" alt="Sculptor RD — Dr. Rafael Dias" width="1128" height="304" />
-          </a>
-          <a class="hero__contact" href="#contato">Contato</a>
-        </div>
-
-        <button class="media-toggle hero__pause" type="button" data-media-toggle="hero" aria-pressed="false" aria-label="Pausar vídeo">
-          <span class="media-toggle__pause" aria-hidden="true"></span>
-          <span class="media-toggle__play" aria-hidden="true"></span>
-          <span class="media-toggle__label">Pausar vídeo</span>
-        </button>
-
-        <div class="hero__content container reveal is-visible">
-          <p class="overline">Full Face em Parauapebas</p>
-          <h1 id="hero-title">Harmonização Full Face para <em>valorizar o que já é seu.</em></h1>
-          <p class="hero__lead">
-            O equilíbrio entre os traços, a proporção do rosto e o que você deseja mudar orientam cada etapa da avaliação e do procedimento.
-          </p>
-          <button class="button button--primary js-open-form" type="button" data-cta-position="hero">
-            Agendar minha avaliação
-            <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M4 10h11M11 6l4 4-4 4" /></svg>
-          </button>
-        </div>
-        <a class="hero__scroll" href="#resultados" aria-label="Ir para resultados">
-          <span>Veja casos de full face</span>
-          <i aria-hidden="true"></i>
-        </a>
-      </section>
-
-      <section class="section results" id="resultados" aria-labelledby="results-title">
-        <div class="container section-heading reveal">
-          <p class="overline">Casos clínicos</p>
-          <h2 id="results-title">Cada rosto pede uma <em>combinação diferente.</em></h2>
-          <p>Veja casos de full face com objetivos distintos. As imagens ajudam a conhecer o trabalho, mas não antecipam o resultado de um futuro procedimento.</p>
-        </div>
-
-        <div class="carousel reveal" role="region" aria-label="Casos clínicos de full face">
-          <div class="carousel__track">
-            <figure class="case">
-              <img src="assets/media/full-face-case-01.jpg" alt="Caso de full face: antes e depois" width="1440" height="1440" />
-              <figcaption><span>01</span> Antes e depois</figcaption>
-            </figure>
-            <figure class="case">
-              <img src="assets/media/full-face-case-02.jpg" alt="Caso de full face com foco no terço médio" width="1440" height="1440" loading="lazy" />
-              <figcaption><span>02</span> Terço médio</figcaption>
-            </figure>
-            <figure class="case">
-              <img src="assets/media/full-face-case-03.jpg" alt="Caso de full face com foco no contorno mandibular" width="1440" height="1440" loading="lazy" />
-              <figcaption><span>03</span> Contorno mandibular</figcaption>
-            </figure>
-            <figure class="case">
-              <img src="assets/media/full-face-case-04.jpg" alt="Caso de full face com foco na simetria facial" width="1440" height="1795" loading="lazy" />
-              <figcaption><span>04</span> Simetria facial</figcaption>
-            </figure>
-            <figure class="case">
-              <img src="assets/media/full-face-case-05.jpg" alt="Caso de full face: antes e depois" width="1440" height="1440" loading="lazy" />
-              <figcaption><span>05</span> Antes e depois</figcaption>
-            </figure>
-
-            <figure class="case" aria-hidden="true">
-              <img src="assets/media/full-face-case-01.jpg" alt="" width="1440" height="1440" loading="lazy" />
-              <figcaption><span>01</span> Antes e depois</figcaption>
-            </figure>
-            <figure class="case" aria-hidden="true">
-              <img src="assets/media/full-face-case-02.jpg" alt="" width="1440" height="1440" loading="lazy" />
-              <figcaption><span>02</span> Terço médio</figcaption>
-            </figure>
-            <figure class="case" aria-hidden="true">
-              <img src="assets/media/full-face-case-03.jpg" alt="" width="1440" height="1440" loading="lazy" />
-              <figcaption><span>03</span> Contorno mandibular</figcaption>
-            </figure>
-            <figure class="case" aria-hidden="true">
-              <img src="assets/media/full-face-case-04.jpg" alt="" width="1440" height="1795" loading="lazy" />
-              <figcaption><span>04</span> Simetria facial</figcaption>
-            </figure>
-            <figure class="case" aria-hidden="true">
-              <img src="assets/media/full-face-case-05.jpg" alt="" width="1440" height="1440" loading="lazy" />
-              <figcaption><span>05</span> Antes e depois</figcaption>
-            </figure>
-          </div>
-        </div>
-        <div class="carousel-controls container reveal">
-          <button class="carousel-controls__pause" type="button" aria-pressed="false">
-            <span aria-hidden="true"></span>
-            <b>Pausar movimento</b>
-          </button>
-          <p>Arraste para explorar os casos</p>
-        </div>
-        <p class="clinical-note container reveal">
-          <strong>Dr. Rafael Dias.</strong> Imagens de casos clínicos publicadas no perfil profissional. Cada caso é único e os resultados podem variar.
-        </p>
-      </section>
-
-      <section class="section testimonial" id="depoimento" aria-labelledby="testimonial-title">
-        <div class="container split split--testimonial">
-          <div class="testimonial__copy reveal">
-            <p class="overline">Relato após o full face</p>
-            <span class="quote-mark" aria-hidden="true">“</span>
-            <h2 id="testimonial-title">Fazer o Full Face foi uma das melhores decisões da minha vida.</h2>
-            <p>Depoimento espontâneo publicado no perfil profissional do Dr. Rafael Dias. A experiência e a recuperação variam de pessoa para pessoa.</p>
-          </div>
-          <div class="portrait-video portrait-video--testimonial reveal">
-            <video controls playsinline preload="metadata" poster="assets/media/rafael-full-face-testimonial-poster.jpg" data-track-video="testimonial">
-              <source src="assets/media/rafael-full-face-testimonial.mp4" type="video/mp4" />
-              Seu navegador não suporta vídeo HTML5.
-            </video>
-            <span class="media-index" aria-hidden="true">01 / 03</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="section experience" id="experiencia" aria-labelledby="experience-title">
-        <div class="container split split--experience">
-          <div class="portrait-video portrait-video--muted reveal">
-            <video autoplay muted loop playsinline preload="metadata" data-track-video="experience" aria-hidden="true" tabindex="-1">
-              <source src="assets/media/rafael-presentation.mp4" type="video/mp4" />
-            </video>
-            <span class="media-index" aria-hidden="true">02 / 03</span>
-          </div>
-          <div class="experience__copy reveal">
-            <p class="overline">Experiência cirúrgica</p>
-            <h2 id="experience-title">Esculpir uma imagem de alto valor não é mudar quem você é.</h2>
-            <p>
-              É revelar sua melhor versão com técnica, critério e respeito às suas proporções.
-            </p>
-            <button class="button button--primary js-open-form" type="button" data-cta-position="experience">
-              Quero agendar minha avaliação
-              <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M4 10h11M11 6l4 4-4 4" /></svg>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <section class="section doctor" id="sobre" aria-labelledby="doctor-title">
-        <div class="container split split--doctor">
-          <div class="doctor__copy reveal">
-            <p class="overline">Quem realiza o full face</p>
-            <h2 id="doctor-title">Dr. Rafael Dias</h2>
-            <p class="doctor__lead">
-              Especialista em harmonização facial, com atuação em procedimentos estéticos e reparadores da face.
-            </p>
-            <p>
-              Na avaliação para full face, o Dr. Rafael Dias considera as proporções do rosto, a harmonia entre as estruturas e a mudança desejada pelo paciente. A proposta é discutida com clareza, incluindo limites, cuidados e etapas da recuperação.
-            </p>
-
-          </div>
-          <figure class="doctor__portrait reveal">
-            <video class="doctor__video" autoplay muted loop playsinline preload="metadata" poster="assets/media/rafael-dias-profile-poster.jpg" aria-hidden="true" tabindex="-1">
-              <source src="assets/media/rafael-dias-profile.mp4" type="video/mp4" />
-            </video>
-            <figcaption>
-              <strong>Dr. Rafael Dias</strong>
-              <span>Cirurgião-dentista · Bucomaxilofacial</span>
-            </figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section class="section technology" id="tecnologia" aria-labelledby="technology-title">
-        <div class="technology__line" aria-hidden="true"></div>
-        <div class="container split split--technology">
-          <div class="technology__copy reveal">
-            <p class="overline">Como o procedimento é definido</p>
-            <h2 id="technology-title">O full face começa <em>na avaliação.</em></h2>
-            <p>
-              Não existe um rosto padrão. O plano depende do exame presencial, da anatomia facial e do que o paciente busca mudar.
-            </p>
-            <ul class="technology__list">
-              <li><span>01</span> Exame do rosto e das proporções faciais</li>
-              <li><span>02</span> Definição das mudanças possíveis</li>
-              <li><span>03</span> Orientações para o procedimento e recuperação</li>
-            </ul>
-          </div>
-          <div class="technology__visual reveal" aria-label="Bastidores da avaliação e do full face">
-            <video autoplay muted loop playsinline preload="metadata" poster="assets/media/rafael-hero-poster.jpg" data-track-video="technology" aria-hidden="true" tabindex="-1">
-              <source src="assets/media/rafael-hero-desktop.mp4" type="video/mp4" />
-            </video>
-            <div class="technology__frame" aria-hidden="true">
-              <span>Full Face</span>
-              <i></i>
-              <small>Da avaliação à recuperação</small>
-            </div>
-            <span class="media-index" aria-hidden="true">03 / 03</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="section final-cta" id="contato" aria-labelledby="final-title">
-        <div class="final-cta__ring" aria-hidden="true"></div>
-        <div class="container final-cta__content reveal">
-          <h2 id="final-title">Quer saber se o full face faz sentido <em>para o seu caso?</em></h2>
-          <p>Fale com a equipe para consultar horários e receber as informações da avaliação com o Dr. Rafael Dias.</p>
-          <div class="final-cta__actions">
-            <button class="button button--primary js-open-form" type="button" data-cta-position="final">
-              Agendar minha avaliação
-              <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M4 10h11M11 6l4 4-4 4" /></svg>
-            </button>
-            <a
-              class="button button--secondary js-whatsapp"
-              href="https://wa.me/559491830101"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-whatsapp-position="final"
-            >
-              <svg class="whatsapp-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.5 4.1 1.6 5.9L.2 24l6.4-1.7c1.7.9 3.6 1.4 5.5 1.4 6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.4-8.4Zm-8.4 18.2c-1.7 0-3.4-.5-4.9-1.3l-.4-.2-3.8 1 1-3.7-.2-.4a9.8 9.8 0 1 1 8.3 4.6Zm5.4-7.4c-.3-.1-1.8-.9-2.1-1-.3-.1-.5-.1-.7.2s-.8 1-.9 1.2c-.2.2-.4.2-.7.1-1.8-.9-3-1.6-4.2-3.7-.3-.6.3-.5.9-1.8.1-.2 0-.5 0-.7l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 2.9s1.2 3.3 1.4 3.6c.2.2 2.4 3.7 5.9 5.2 2.2.9 3 .9 4.1.8.7-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.2-.3-.4-.4-.7-.5Z" /></svg>
-              Falar com a equipe no WhatsApp
-            </a>
-          </div>
-          <p class="final-cta__note">Atendimento em Parauapebas · Pará</p>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="container footer__inner">
-        <a class="brand brand--footer" href="#conteudo" aria-label="Voltar ao início">
-          <img class="brand__logo" src="assets/brand/logo-sculptor-rd.png" alt="Sculptor RD — Dr. Rafael Dias" width="1128" height="304" loading="lazy" />
-        </a>
-        <p>© 2026 Dr. Rafael Dias. Todos os direitos reservados.</p>
-        <nav aria-label="Links legais">
-          <a href="privacidade.html">Política de Privacidade</a>
-          <a href="https://www.instagram.com/drsidneycolares/" target="_blank" rel="noopener noreferrer">Instagram</a>
-        </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#10100f" />
+  <meta name="description" content="Dr. Rafael Dias — Harmonização facial e estética avançada em Parauapebas." />
+  <meta property="og:title" content="Dr. Rafael Dias | Harmonização Facial" />
+  <meta property="og:description" content="Estética facial guiada por técnica, naturalidade e propósito." />
+  <meta property="og:type" content="website" />
+  <title>Dr. Rafael Dias | Harmonização Facial</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="config.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="#inicio" aria-label="Dr. Rafael Dias — início"><img src="assets/brand/logo-rafael-dias.png" alt="Dr. Rafael Dias" /></a>
+    <nav class="desktop-nav" aria-label="Navegação principal"><a href="#tratamentos">Tratamentos</a><a href="#resultados">Resultados</a><a href="#sobre">O Instituto</a></nav>
+    <a class="header-cta js-whatsapp" href="https://wa.me/559491830101" data-whatsapp-position="header" target="_blank" rel="noopener">Agendar consulta <span>↗</span></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-button><i></i><i></i><span class="sr-only">Abrir menu</span></button>
+  </header>
+  <nav class="mobile-nav" id="mobile-menu" aria-label="Menu móvel" data-mobile-menu hidden><a href="#tratamentos">Tratamentos</a><a href="#resultados">Resultados</a><a href="#sobre">O Instituto</a><a class="js-whatsapp" href="https://wa.me/559491830101" data-whatsapp-position="menu" target="_blank" rel="noopener">Agendar consulta</a></nav>
+  <main id="conteudo">
+    <section class="hero" id="inicio">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/instituto-rafael/hero-portrait.jpg" aria-hidden="true"><source src="assets/instituto-rafael/hero-video.mp4" type="video/mp4" /></video><div class="hero-shade"></div><div class="hero-grid"></div>
+      <div class="hero-content layout"><p class="eyebrow light reveal">Instituto Dr. Rafael Dias <span></span> Parauapebas — PA</p><h1 class="reveal">Estética que <em>respeita</em><br />quem você é.</h1><p class="hero-copy reveal">Harmonização facial, estética avançada e uma experiência desenhada para revelar a sua melhor versão — com naturalidade.</p><a class="button button-gold js-whatsapp reveal" href="https://wa.me/559491830101" data-whatsapp-position="hero" target="_blank" rel="noopener">Agendar minha avaliação <span>↗</span></a></div>
+      <div class="hero-footer layout reveal"><span>Role para descobrir</span><i></i><p>Beleza não é padrão.<br />É identidade.</p></div>
+    </section>
+    <section class="intro section layout" id="sobre">
+      <div class="intro-label reveal"><span>01</span><p>O Instituto</p></div>
+      <div class="intro-copy reveal"><p class="eyebrow">Um novo jeito de se enxergar</p><h2>Transformações sutis.<br /><em>Presenças marcantes.</em></h2><p class="body-copy">Aqui, cada tratamento começa com escuta. A técnica não apaga os seus traços — ela valoriza o que faz de você uma pessoa única.</p><a class="text-link" href="#tratamentos">Conheça nossos tratamentos <span>→</span></a></div>
+      <figure class="intro-image reveal"><img src="assets/instituto-rafael/hero-portrait.jpg" alt="Paciente em atendimento estético" loading="lazy" /><figcaption>Naturalidade em cada detalhe</figcaption></figure>
+    </section>
+    <section class="services section" id="tratamentos">
+      <div class="layout services-heading reveal"><p class="eyebrow">Tratamentos</p><h2>O cuidado que a sua<br /><em>imagem merece.</em></h2><p>Protocolos personalizados, técnica de alto nível e uma visão completa da sua beleza.</p></div>
+      <div class="service-grid layout">
+        <article class="service-card service-card--large reveal"><img src="assets/instituto-rafael/service-01.jpg" alt="Tratamento de harmonização facial" loading="lazy" /><div><span>01</span><h3>Harmonização<br />Facial</h3><p>Equilíbrio, contorno e expressão.</p><a class="js-whatsapp" href="https://wa.me/559491830101" data-whatsapp-position="service-harmonizacao" target="_blank" rel="noopener">Saiba mais <b>↗</b></a></div></article>
+        <article class="service-card reveal"><img src="assets/instituto-rafael/service-02.jpg" alt="Procedimento de bioestimulação" loading="lazy" /><div><span>02</span><h3>Bioestimuladores<br />de Colágeno</h3><a class="js-whatsapp" href="https://wa.me/559491830101" data-whatsapp-position="service-bioestimuladores" target="_blank" rel="noopener">Saiba mais <b>↗</b></a></div></article>
+        <article class="service-card reveal"><img src="assets/instituto-rafael/service-03.jpg" alt="Tratamento facial personalizado" loading="lazy" /><div><span>03</span><h3>Protocolos<br />Faciais</h3><a class="js-whatsapp" href="https://wa.me/559491830101" data-whatsapp-position="service-protocolos" target="_blank" rel="noopener">Saiba mais <b>↗</b></a></div></article>
+        <article class="service-card service-card--dark reveal"><div><span>04</span><h3>Depilação<br />a Laser</h3><p>Tecnologia, conforto e liberdade para a sua rotina.</p><a class="js-whatsapp" href="https://wa.me/559491830101" data-whatsapp-position="service-laser" target="_blank" rel="noopener">Saiba mais <b>↗</b></a></div><img src="assets/instituto-rafael/laser-01.png" alt="Tecnologia para depilação a laser" loading="lazy" /></article>
       </div>
-    </footer>
-
-    <dialog class="lead-modal" id="lead-modal" aria-labelledby="form-title">
-      <div class="lead-modal__panel">
-        <button class="lead-modal__close" type="button" aria-label="Fechar formulário">
-          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" /></svg>
-        </button>
-        <div class="lead-modal__brand brand" aria-hidden="true">
-          <img class="brand__logo" src="assets/brand/logo-sculptor-rd.png" alt="" width="1128" height="304" />
-        </div>
-        <p class="overline">Consulta de full face</p>
-        <h2 id="form-title">Solicite uma avaliação</h2>
-        <p class="lead-modal__intro">Informe seus dados para iniciar a conversa com a equipe pelo WhatsApp.</p>
-
-        <div class="form-progress" aria-label="Progresso do formulário">
-          <span class="is-active" data-progress="1">01</span><i></i>
-          <span data-progress="2">02</span><i></i>
-          <span data-progress="3">03</span><i></i>
-          <span data-progress="4">04</span>
-        </div>
-
-        <form id="lead-form" novalidate>
-          <div class="form-step is-active" data-step="1">
-            <label for="lead-name">Como podemos chamar você?</label>
-            <input id="lead-name" name="name" type="text" autocomplete="name" placeholder="Digite seu nome" required minlength="2" />
-            <p class="field-error" id="name-error" role="alert"></p>
-          </div>
-
-          <div class="form-step" data-step="2" hidden>
-            <label for="lead-phone">Qual é o seu WhatsApp?</label>
-            <input
-              id="lead-phone"
-              name="phone"
-              type="tel"
-              autocomplete="tel"
-              inputmode="tel"
-              placeholder="(DDD) 00000-0000"
-              required
-              minlength="14"
-            />
-            <p class="field-error" id="phone-error" role="alert"></p>
-          </div>
-
-          <div class="form-step" data-step="3" hidden>
-            <label for="lead-city">Qual é a sua cidade?</label>
-            <input id="lead-city" name="city" type="text" autocomplete="address-level2" placeholder="Digite sua cidade" required minlength="2" />
-            <p class="field-error" id="city-error" role="alert"></p>
-          </div>
-
-          <div class="form-step" data-step="4" hidden>
-            <fieldset>
-              <legend>O que você procura neste momento?</legend>
-              <label class="choice">
-                <input name="interest" type="radio" value="Quero agendar uma avaliação de full face" required />
-                <span>Quero agendar uma avaliação de full face</span>
-              </label>
-              <label class="choice">
-                <input name="interest" type="radio" value="Quero tirar dúvidas sobre full face" />
-                <span>Quero tirar dúvidas sobre full face</span>
-              </label>
-            </fieldset>
-            <label class="consent">
-              <input name="privacy_consent" type="checkbox" required />
-              <span>Autorizo o contato da equipe e li a <a href="privacidade.html" target="_blank">Política de Privacidade</a>.</span>
-            </label>
-            <p class="field-error" id="interest-error" role="alert"></p>
-          </div>
-
-          <input type="hidden" name="utm_source" />
-          <input type="hidden" name="utm_medium" />
-          <input type="hidden" name="utm_campaign" />
-          <input type="hidden" name="utm_content" />
-          <input type="hidden" name="utm_term" />
-          <div class="form-honeypot" aria-hidden="true">
-            <label for="lead-website">Não preencha este campo</label>
-            <input id="lead-website" name="website" type="text" tabindex="-1" autocomplete="off" />
-          </div>
-
-          <div class="form-actions">
-            <button class="form-back" type="button" hidden>Voltar</button>
-            <button class="button button--primary form-next" type="button">
-              Continuar
-              <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M4 10h11M11 6l4 4-4 4" /></svg>
-            </button>
-            <button class="button button--primary form-submit" type="submit" hidden>
-              Continuar
-              <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M4 10h11M11 6l4 4-4 4" /></svg>
-            </button>
-          </div>
-          <p class="form-status" role="status" aria-live="polite"></p>
-        </form>
-      </div>
-    </dialog>
-  </body>
-</html>
+    </section>
+    <section class="statement"><div class="layout statement-inner reveal"><p class="eyebrow light">A nossa assinatura</p><h2>Não é sobre transformar o seu rosto.<br /><em>É sobre revelar a sua melhor versão.</em></h2><span class="statement-mark">RD</span></div></section>
+    <section class="results section layout" id="resultados">
+      <div class="results-heading reveal"><p class="eyebrow">Resultados reais</p><h2>Quando a técnica encontra<br /><em>a sua identidade.</em></h2><p class="body-copy">Resultados que preservam a essência de cada paciente. Arraste o marcador para visualizar.</p></div>
+      <div class="comparison-grid">
+        <article class="comparison reveal" data-comparison><div class="comparison-frame"><img class="comparison-after" src="assets/instituto-rafael/case-after-01.png" alt="Resultado após procedimento facial" loading="lazy" /><div class="comparison-before" data-before><img src="assets/instituto-rafael/case-before-01.png" alt="Antes do procedimento facial" loading="lazy" /></div><input class="comparison-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois do caso 1" data-comparison-range /><span class="comparison-handle" data-comparison-handle aria-hidden="true">↔</span><small class="label-before">Antes</small><small class="label-after">Depois</small></div><p>Harmonização facial <span>— Caso clínico 01</span></p></article>
+        <article class="comparison reveal" data-comparison><div class="comparison-frame"><img class="comparison-after" src="assets/instituto-rafael/case-after-02.png" alt="Resultado após procedimento facial" loading="lazy" /><div class="comparison-before" data-before><img src="assets/instituto-rafael/case-before-02.png" alt="Antes do procedimento facial" loading="lazy" /></div><input class="comparison-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois do caso 2" data-comparison-range /><span class="comparison-handle" data-comparison-handle aria-hidden="true">↔</span><small class="label-before">Antes</small><small class="label-after">Depois</small></div><p>Harmonização facial <span>— Caso clínico 02</span></p></article>
+      </div><p class="legal-note reveal">Imagens de pacientes autorizadas e publicadas para demonstração do trabalho. Cada pessoa possui características individuais e os resultados podem variar.</p>
+    </section>
+    <section class="expertise section"><div class="layout expertise-grid"><div class="expertise-image reveal"><img src="assets/instituto-rafael/skincare-treatment.png" alt="Momento de cuidado estético" loading="lazy" /></div><div class="expertise-copy reveal"><p class="eyebrow">A experiência Rafael Dias</p><h2>Seu rosto é único.<br /><em>Seu plano também.</em></h2><p class="body-copy">Da primeira consulta ao acompanhamento pós-procedimento, você encontra atenção aos detalhes, tecnologia e segurança em cada etapa.</p><ul><li><b>01</b> Avaliação individualizada</li><li><b>02</b> Planejamento facial completo</li><li><b>03</b> Acompanhamento próximo</li></ul><a class="button button-outline js-whatsapp" href="https://wa.me/559491830101" data-whatsapp-position="experience" target="_blank" rel="noopener">Falar com a equipe <span>↗</span></a></div></div></section>
+    <section class="closing" id="contato"><img class="closing-image" src="assets/instituto-rafael/spa-portrait.png" alt="Paciente sorrindo após atendimento" loading="lazy" /><div class="closing-shade"></div><div class="closing-content layout reveal"><p class="eyebrow light">Sua jornada começa aqui</p><h2>Pronta para se sentir<br /><em>ainda mais você?</em></h2><p>Agende sua avaliação e descubra o que um plano feito para você pode revelar.</p><a class="button button-gold js-whatsapp" href="https://wa.me/559491830101" data-whatsapp-position="final" target="_blank" rel="noopener">Agendar minha avaliação <span>↗</span></a></div></section>
+  </main>
+  <footer class="footer"><div class="layout footer-grid"><a class="brand" href="#inicio" aria-label="Voltar ao início"><img src="assets/brand/logo-rafael-dias.png" alt="Dr. Rafael Dias" loading="lazy" /></a><p>Estética avançada e harmonização facial.<br />Parauapebas — Pará.</p><div><a class="js-whatsapp" href="https://wa.me/559491830101" data-whatsapp-position="footer" target="_blank" rel="noopener">+55 94 9183-0101</a><a href="privacidade.html">Política de privacidade</a></div></div><p class="footer-bottom layout">© 2026 Instituto Dr. Rafael Dias. Todos os direitos reservados.</p></footer>
+</body></html>
