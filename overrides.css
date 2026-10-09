@@ -9,3 +9,11 @@
 @media(max-width:900px){.header{justify-content:space-between}.patient-link,.header-button{display:inline-flex}.patient-link{margin-left:auto;font-size:8px}.header-button{font-size:8px}.case-choice{grid-template-columns:minmax(0,1fr) 22px;grid-template-rows:auto auto;row-gap:5px;min-height:76px}.case-choice b{grid-column:1;grid-row:1;font-size:9px}.case-choice small{grid-column:1;grid-row:2;font-size:8px;white-space:normal}.case-choice span{grid-column:2;grid-row:span 2}.footer-grid p,.footer-grid a:not(.logo){font-size:12px}.footer-bottom{font-size:8px}}
 @media(max-width:480px){.patient-link{display:none}.case-choice{grid-template-columns:minmax(0,1fr) 20px}.case-choice b{font-size:8px}.case-choice small{font-size:7px}.footer-grid p,.footer-grid a:not(.logo){font-size:12px}}
 @media(prefers-reduced-motion:reduce){.hero-motion{display:none}.hero-dust{animation:none}}
+
+/* Luz sutil atrás do retrato: contraste premium, sem textura excessiva. */
+.hero{background:#060704}
+.hero-motion,.hero-dust{display:none}
+.hero:after{background:none;opacity:0}
+.hero:before{content:"";position:absolute;z-index:0;pointer-events:none;width:660px;height:660px;right:8%;top:50%;translate:0 -50%;border-radius:50%;background:radial-gradient(circle,rgba(209,158,38,.3) 0%,rgba(168,113,16,.16) 28%,rgba(74,49,7,.06) 48%,transparent 71%);filter:blur(18px);animation:portrait-glow 9s ease-in-out infinite alternate}.hero-glow{z-index:0;left:auto;right:-170px;bottom:-370px;width:680px;height:680px;background:radial-gradient(circle,rgba(190,137,23,.18),transparent 68%);filter:blur(10px);animation:none}.hero-grid{z-index:2}
+@keyframes portrait-glow{from{opacity:.6;transform:scale(.94)}to{opacity:1;transform:scale(1.05)}}
+@media(max-width:900px){.hero:before{width:430px;height:430px;right:-140px;top:62%;opacity:.85}.hero-glow{right:-260px;bottom:-300px}}
