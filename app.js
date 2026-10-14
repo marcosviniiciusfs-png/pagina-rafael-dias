@@ -81,16 +81,7 @@
 
   const carousel = document.querySelector(".carousel");
   const carouselTrack = document.querySelector(".carousel__track");
-  const carouselPause = document.querySelector(".carousel-controls__pause");
   let carouselTracked = false;
-
-  carouselPause?.addEventListener("click", () => {
-    const paused = carouselPause.getAttribute("aria-pressed") !== "true";
-    carouselPause.setAttribute("aria-pressed", String(paused));
-    carouselPause.querySelector("b").textContent = paused ? "Retomar movimento" : "Pausar movimento";
-    carouselTrack.style.animationPlayState = paused ? "paused" : "running";
-    track("carousel_control", { action: paused ? "pause" : "play" });
-  });
 
   const trackCarouselInteraction = () => {
     if (carouselTracked) return;
@@ -99,6 +90,49 @@
   };
   carousel?.addEventListener("pointerdown", trackCarouselInteraction, { once: true });
   carousel?.addEventListener("keydown", trackCarouselInteraction, { once: true });
+
+  if (carousel && carouselTrack && !reduceMotion.matches) {
+    let dragging = false;
+    let startX = 0;
+    let startScroll = 0;
+    let previousTime = 0;
+    const autoSpeed = 0.032;
+
+    const advanceCarousel = (time) => {
+      if (previousTime) {
+        const halfTrack = carouselTrack.scrollWidth / 2;
+        if (!dragging && halfTrack > 0) {
+          carousel.scrollLeft += (time - previousTime) * autoSpeed;
+          if (carousel.scrollLeft >= halfTrack) carousel.scrollLeft -= halfTrack;
+        }
+      }
+      previousTime = time;
+      requestAnimationFrame(advanceCarousel);
+    };
+    requestAnimationFrame(advanceCarousel);
+
+    carousel.addEventListener("pointerdown", (event) => {
+      dragging = true;
+      startX = event.clientX;
+      startScroll = carousel.scrollLeft;
+      carousel.classList.add("is-dragging");
+      carousel.setPointerCapture?.(event.pointerId);
+    });
+
+    carousel.addEventListener("pointermove", (event) => {
+      if (!dragging) return;
+      carousel.scrollLeft = startScroll - (event.clientX - startX) * 1.35;
+    });
+
+    const stopDragging = (event) => {
+      if (!dragging) return;
+      dragging = false;
+      carousel.classList.remove("is-dragging");
+      if (event?.pointerId !== undefined && carousel.hasPointerCapture?.(event.pointerId)) carousel.releasePointerCapture(event.pointerId);
+    };
+    carousel.addEventListener("pointerup", stopDragging);
+    carousel.addEventListener("pointercancel", stopDragging);
+  }
 
   document.querySelectorAll("video[data-track-video]").forEach((video) => {
     const videoName = video.dataset.trackVideo;

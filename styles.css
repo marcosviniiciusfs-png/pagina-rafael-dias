@@ -465,6 +465,7 @@ p {
 
 .results {
   overflow: hidden;
+  padding-bottom: 72px;
   background:
     linear-gradient(180deg, var(--bg), transparent 20%),
     var(--bg-soft);
@@ -472,7 +473,21 @@ p {
 
 .carousel {
   width: 100%;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: none;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel.is-dragging {
+  cursor: grabbing;
+  user-select: none;
 }
 
 .carousel__track {
@@ -480,17 +495,7 @@ p {
   width: max-content;
   gap: 15px;
   padding-inline: max(32px, calc((100vw - var(--container)) / 2));
-  animation: carousel-flow 55s linear infinite;
   will-change: transform;
-}
-
-.carousel:hover .carousel__track,
-.carousel:focus-within .carousel__track {
-  animation-play-state: paused;
-}
-
-@keyframes carousel-flow {
-  to { transform: translateX(calc(-50% - 7.5px)); }
 }
 
 .case {
@@ -1746,30 +1751,13 @@ p {
   .carousel {
     overflow-x: auto;
     overscroll-behavior-inline: contain;
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: none;
     scrollbar-width: none;
-  }
-
-  .carousel::-webkit-scrollbar {
-    display: none;
-  }
-
-  .carousel__track {
-    animation: none;
-  }
-
-  .carousel-controls__pause {
-    display: none;
-  }
-
-  .carousel-controls p {
-    display: block;
   }
 
   .case {
     width: 78vw;
     max-width: 340px;
-    scroll-snap-align: center;
   }
 
   .case[aria-hidden="true"] {
