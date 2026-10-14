@@ -111,6 +111,9 @@
     };
     requestAnimationFrame(advanceCarousel);
 
+    // Evita que o navegador arraste a própria imagem e preserve o gesto para o carrossel.
+    carousel.addEventListener("dragstart", (event) => event.preventDefault());
+
     carousel.addEventListener("pointerdown", (event) => {
       dragging = true;
       startX = event.clientX;

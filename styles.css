@@ -527,6 +527,9 @@ p {
   aspect-ratio: 1 / 1;
   object-fit: cover;
   object-position: center;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
   transition: scale 900ms var(--ease), filter 500ms ease;
 }
 
