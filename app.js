@@ -115,6 +115,9 @@
     carousel.addEventListener("dragstart", (event) => event.preventDefault());
 
     carousel.addEventListener("pointerdown", (event) => {
+      // No desktop, apenas o botão esquerdo inicia o arraste. Em telas touch,
+      // tocar e segurar mantém o mesmo comportamento.
+      if (event.pointerType === "mouse" && event.button !== 0) return;
       dragging = true;
       startX = event.clientX;
       startScroll = carousel.scrollLeft;
