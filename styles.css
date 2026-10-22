@@ -1049,6 +1049,14 @@ p {
   object-fit: cover;
 }
 
+.technology__visual--illustration::after {
+  background: linear-gradient(100deg, rgba(230, 236, 229, 0.04), rgba(31, 37, 31, 0.14));
+}
+
+.technology__visual--illustration img {
+  filter: none;
+}
+
 .technology__frame {
   position: absolute;
   z-index: 1;
