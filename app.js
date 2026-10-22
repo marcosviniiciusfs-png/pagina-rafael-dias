@@ -17,21 +17,21 @@
     dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
   };
 
+  const installClarity = () => {
+    const clarityId = String(config.clarityProjectId || "").trim();
+    if (!clarityId) return;
+    window.clarity = window.clarity || function clarityQueue() {
+      (window.clarity.q = window.clarity.q || []).push(arguments);
+    };
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = `https://www.clarity.ms/tag/${encodeURIComponent(clarityId)}`;
+    document.head.append(script);
+  };
+
   installGtm();
+  installClarity();
   track("view_landing_page");
-
-  const readCookie = (name) => {
-    const prefix = `${name}=`;
-    const item = document.cookie.split("; ").find((cookie) => cookie.startsWith(prefix));
-    return item ? decodeURIComponent(item.slice(prefix.length)) : "";
-  };
-
-  const getFbc = () => {
-    const cookie = readCookie("_fbc");
-    if (cookie) return cookie;
-    const fbclid = new URLSearchParams(window.location.search).get("fbclid");
-    return fbclid ? `fb.1.${Math.floor(Date.now() / 1000)}.${fbclid}` : "";
-  };
 
   const whatsappNumber = String(config.whatsappNumber || "559491830101").replace(/\D/g, "");
   document.querySelectorAll(".js-whatsapp").forEach((link) => {
@@ -239,9 +239,6 @@
     const step = steps[currentStep - 1];
     const name = form.elements.namedItem("name");
     const phone = form.elements.namedItem("phone");
-    const city = form.elements.namedItem("city");
-    const interest = form.querySelector("input[name='interest']:checked");
-    const consent = form.elements.namedItem("privacy_consent");
 
     if (currentStep === 1) {
       clearError(name);
@@ -251,26 +248,6 @@
     if (currentStep === 2) {
       clearError(phone);
       if (phone.value.replace(/\D/g, "").length < 10) return setError(phone, "Informe um WhatsApp com DDD.", step.querySelector(".field-error"));
-    }
-
-    if (currentStep === 3) {
-      clearError(city);
-      if (city.value.trim().length < 2) return setError(city, "Informe sua cidade.", step.querySelector(".field-error"));
-    }
-
-    if (currentStep === 4) {
-      const error = step.querySelector(".field-error");
-      error.textContent = "";
-      if (!interest) {
-        error.textContent = "Escolha uma opção para continuar.";
-        step.querySelector("input[name='interest']").focus();
-        return false;
-      }
-      if (!consent.checked) {
-        error.textContent = "Confirme a autorização de contato e a leitura da política de privacidade.";
-        consent.focus();
-        return false;
-      }
     }
 
     return true;
@@ -351,59 +328,23 @@
     formStatus.textContent = "Abrindo o WhatsApp…";
 
     const values = Object.fromEntries(new FormData(form));
-    const attribution = utmKeys
-      .filter((key) => values[key])
-      .map((key) => `${key}: ${values[key]}`)
-      .join(" | ");
     const message = [
       "Olá! Acessei a página de Full Face do Dr. Rafael Dias e gostaria de falar com a equipe.",
       "",
       `Nome: ${values.name}`,
       `WhatsApp informado: ${values.phone}`,
-      `Cidade: ${values.city}`,
-      `Interesse: ${values.interest}`,
-      attribution ? `Origem: ${attribution}` : "",
     ]
       .filter(Boolean)
       .join("\n");
 
     const destination = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     const newWindow = window.open(destination, "_blank", "noopener,noreferrer");
-
-    const leadRequest = fetch("/api/leads", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      keepalive: true,
-      body: JSON.stringify({
-        ...values,
-        privacy_consent: values.privacy_consent === "on",
-        meta_consent: true,
-        fbp: readCookie("_fbp"),
-        fbc: getFbc(),
-        source_url: window.location.href,
-      }),
-    });
-
     if (!newWindow) window.location.href = destination;
-
-    try {
-      const response = await leadRequest;
-
-      if (!response.ok) throw new Error(`Lead API returned ${response.status}`);
-      const result = await response.json();
-      if (!result.eventId) throw new Error("Lead API did not return an event ID");
-
-      track("generate_lead", { form: "evaluation", destination: "database" });
-      window.fbq?.("track", "Lead", { content_name: "Avaliação de full face" }, { eventID: result.eventId });
-      track("lead_handoff_whatsapp", { form: "evaluation", step_count: steps.length });
-      formStatus.textContent = "Dados registrados. O WhatsApp foi aberto.";
-    } catch (error) {
-      console.error("Não foi possível registrar o lead.", error);
-      formStatus.textContent = "Não foi possível registrar seus dados. Tente novamente.";
-      track("lead_storage_error", { form: "evaluation" });
-    } finally {
-      form.removeAttribute("aria-busy");
-      submitButton.disabled = false;
-    }
+    track("generate_lead", { form: "evaluation", destination: "whatsapp" });
+    window.fbq?.("track", "Lead", { content_name: "Avaliação de full face" });
+    track("lead_handoff_whatsapp", { form: "evaluation", step_count: steps.length });
+    formStatus.textContent = "O WhatsApp foi aberto. Continue a conversa por lá.";
+    form.removeAttribute("aria-busy");
+    submitButton.disabled = false;
   });
 })();

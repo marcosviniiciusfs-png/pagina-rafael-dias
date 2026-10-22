@@ -151,6 +151,10 @@
             <span class="quote-mark" aria-hidden="true">“</span>
             <h2 id="testimonial-title">Fazer o Full Face foi uma das melhores decisões da minha vida.</h2>
             <p>Depoimento espontâneo publicado no perfil profissional do Dr. Rafael Dias. A experiência e a recuperação variam de pessoa para pessoa.</p>
+            <button class="button button--primary js-open-form" type="button" data-cta-position="testimonial">
+              Agendar minha avaliação
+              <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M4 10h11M11 6l4 4-4 4" /></svg>
+            </button>
           </div>
           <div class="portrait-video portrait-video--testimonial reveal">
             <video controls playsinline preload="metadata" poster="assets/media/rafael-full-face-testimonial-poster.jpg" data-track-video="testimonial">
@@ -224,10 +228,8 @@
               <li><span>03</span> Orientações para o procedimento e recuperação</li>
             </ul>
           </div>
-          <div class="technology__visual reveal" aria-label="Bastidores da avaliação e do full face">
-            <video autoplay muted loop playsinline preload="metadata" poster="assets/media/rafael-hero-poster.jpg" data-track-video="technology" aria-hidden="true" tabindex="-1">
-              <source src="assets/media/rafael-hero-desktop.mp4" type="video/mp4" />
-            </video>
+          <div class="technology__visual reveal">
+            <img src="assets/media/experience-poster.jpg" alt="Dr. Rafael Dias em ambiente clínico" width="720" height="1280" loading="lazy" />
             <span class="media-index" aria-hidden="true">03 / 03</span>
           </div>
         </div>
@@ -284,11 +286,9 @@
         <h2 id="form-title">Solicite uma avaliação</h2>
         <p class="lead-modal__intro">Informe seus dados para iniciar a conversa com a equipe pelo WhatsApp.</p>
 
-        <div class="form-progress" aria-label="Progresso do formulário">
+        <div class="form-progress form-progress--two-steps" aria-label="Progresso do formulário">
           <span class="is-active" data-progress="1">01</span><i></i>
-          <span data-progress="2">02</span><i></i>
-          <span data-progress="3">03</span><i></i>
-          <span data-progress="4">04</span>
+          <span data-progress="2">02</span>
         </div>
 
         <form id="lead-form" novalidate>
@@ -313,31 +313,6 @@
             <p class="field-error" id="phone-error" role="alert"></p>
           </div>
 
-          <div class="form-step" data-step="3" hidden>
-            <label for="lead-city">Qual é a sua cidade?</label>
-            <input id="lead-city" name="city" type="text" autocomplete="address-level2" placeholder="Digite sua cidade" required minlength="2" />
-            <p class="field-error" id="city-error" role="alert"></p>
-          </div>
-
-          <div class="form-step" data-step="4" hidden>
-            <fieldset>
-              <legend>O que você procura neste momento?</legend>
-              <label class="choice">
-                <input name="interest" type="radio" value="Quero agendar uma avaliação de full face" required />
-                <span>Quero agendar uma avaliação de full face</span>
-              </label>
-              <label class="choice">
-                <input name="interest" type="radio" value="Quero tirar dúvidas sobre full face" />
-                <span>Quero tirar dúvidas sobre full face</span>
-              </label>
-            </fieldset>
-            <label class="consent">
-              <input name="privacy_consent" type="checkbox" required />
-              <span>Autorizo o contato da equipe e li a <a href="privacidade.html" target="_blank">Política de Privacidade</a>.</span>
-            </label>
-            <p class="field-error" id="interest-error" role="alert"></p>
-          </div>
-
           <input type="hidden" name="utm_source" />
           <input type="hidden" name="utm_medium" />
           <input type="hidden" name="utm_campaign" />
@@ -355,7 +330,7 @@
               <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M4 10h11M11 6l4 4-4 4" /></svg>
             </button>
             <button class="button button--primary form-submit" type="submit" hidden>
-              Continuar
+              Abrir WhatsApp
               <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M4 10h11M11 6l4 4-4 4" /></svg>
             </button>
           </div>
