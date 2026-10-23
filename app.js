@@ -329,7 +329,7 @@
 
     const values = Object.fromEntries(new FormData(form));
     const message = [
-      "Olá! Acessei a página de Full Face do Dr. Rafael Dias e gostaria de falar com a equipe.",
+      "Olá! Acessei a página de Full Face do Instituto Rafael Dias e gostaria de falar com a equipe.",
       "",
       `Nome: ${values.name}`,
       `WhatsApp informado: ${values.phone}`,

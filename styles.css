@@ -235,6 +235,38 @@ p {
   height: auto;
 }
 
+.brand__wordmark {
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.brand__wordmark strong {
+  color: #fff;
+  font-family: var(--serif);
+  font-size: clamp(30px, 3vw, 42px);
+  font-weight: 600;
+  letter-spacing: 0.035em;
+}
+
+.brand__wordmark strong em {
+  color: var(--gold-light);
+  font-style: normal;
+}
+
+.brand__wordmark small {
+  margin-top: 5px;
+  color: rgba(248, 245, 239, 0.72);
+  font-size: 7px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.brand--footer .brand__wordmark strong {
+  font-size: 31px;
+}
+
 .brand__monogram {
   display: grid;
   width: 42px;
@@ -399,6 +431,11 @@ p {
   font-size: 16px;
   font-weight: 300;
   line-height: 1.65;
+}
+
+.hero__content h1 em,
+.experience__copy h2 em {
+  color: var(--gold-light);
 }
 
 .hero__scroll {
@@ -1433,6 +1470,14 @@ p {
 
 .lead-modal__brand {
   margin-bottom: 38px;
+}
+
+.lead-modal__brand .brand__wordmark strong {
+  font-size: 37px;
+}
+
+.lead-modal__brand .brand__wordmark small {
+  color: var(--muted);
 }
 
 .lead-modal .overline {
