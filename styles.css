@@ -133,6 +133,30 @@ button {
   content: "";
 }
 
+.hero__identity {
+  display: grid;
+  width: fit-content;
+  margin: 0 auto 22px;
+  justify-items: center;
+  color: var(--gold-light);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.hero__identity strong {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+.hero__identity span {
+  margin-top: 6px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+}
+
 h1,
 h2 {
   margin: 0;
@@ -1238,6 +1262,20 @@ p {
   text-underline-offset: 4px;
 }
 
+.footer nav .footer__instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.footer__instagram svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: var(--gold-light);
+  stroke-width: 1.6;
+}
+
 /* DireÃ§Ã£o editorial: blocos claros alternados, com contraste pontual nos momentos de maior impacto. */
 .results {
   background: var(--surface);
@@ -1786,6 +1824,18 @@ p {
 
   .hero__content {
     padding-bottom: max(42px, env(safe-area-inset-bottom));
+  }
+
+  .hero__identity {
+    margin-bottom: 16px;
+  }
+
+  .hero__identity strong {
+    font-size: 9px;
+  }
+
+  .hero__identity span {
+    font-size: 7px;
   }
 
   .hero__content h1 {
