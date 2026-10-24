@@ -277,33 +277,70 @@
         </div>
         <p class="overline">Consulta de full face</p>
         <h2 id="form-title">Solicite uma avaliação</h2>
-        <p class="lead-modal__intro">Informe seus dados para iniciar a conversa com a equipe pelo WhatsApp.</p>
+        <p class="lead-modal__intro">Leva menos de um minuto. Suas respostas ajudam a equipe a preparar seu atendimento.</p>
 
-        <div class="form-progress form-progress--two-steps" aria-label="Progresso do formulário">
+        <div class="form-progress form-progress--five-steps" aria-label="Progresso do formulário">
           <span class="is-active" data-progress="1">01</span><i></i>
-          <span data-progress="2">02</span>
+          <span data-progress="2">02</span><i></i>
+          <span data-progress="3">03</span><i></i>
+          <span data-progress="4">04</span><i></i>
+          <span data-progress="5">05</span>
         </div>
 
         <form id="lead-form" novalidate>
           <div class="form-step is-active" data-step="1">
-            <label for="lead-name">Como podemos chamar você?</label>
-            <input id="lead-name" name="name" type="text" autocomplete="name" placeholder="Digite seu nome" required minlength="2" />
-            <p class="field-error" id="name-error" role="alert"></p>
+            <label for="lead-name">Vamos começar pelos seus dados</label>
+            <input id="lead-name" name="name" type="text" autocomplete="name" placeholder="Nome completo" required minlength="2" />
+            <input id="lead-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="WhatsApp com DDD" required minlength="14" />
+            <input id="lead-email" name="email" type="email" autocomplete="email" placeholder="Seu melhor e-mail" required />
+            <p class="field-error" id="contact-error" role="alert"></p>
           </div>
 
           <div class="form-step" data-step="2" hidden>
-            <label for="lead-phone">Qual é o seu WhatsApp?</label>
-            <input
-              id="lead-phone"
-              name="phone"
-              type="tel"
-              autocomplete="tel"
-              inputmode="tel"
-              placeholder="(DDD) 00000-0000"
-              required
-              minlength="14"
-            />
-            <p class="field-error" id="phone-error" role="alert"></p>
+            <fieldset>
+              <legend>Qual é a sua faixa etária?</legend>
+              <label class="choice"><input type="radio" name="ageRange" value="Até 29 anos" required /><span>Até 29 anos</span></label>
+              <label class="choice"><input type="radio" name="ageRange" value="30 a 39 anos" /><span>30 a 39 anos</span></label>
+              <label class="choice"><input type="radio" name="ageRange" value="40 a 49 anos" /><span>40 a 49 anos</span></label>
+              <label class="choice"><input type="radio" name="ageRange" value="50 a 59 anos" /><span>50 a 59 anos</span></label>
+              <label class="choice"><input type="radio" name="ageRange" value="60 anos ou mais" /><span>60 anos ou mais</span></label>
+            </fieldset>
+            <p class="field-error" id="age-error" role="alert"></p>
+          </div>
+
+          <div class="form-step" data-step="3" hidden>
+            <fieldset>
+              <legend>Como é o seu hábito de autocuidado hoje?</legend>
+              <label class="choice"><input type="radio" name="selfCare" value="Raramente faço algo por mim" required /><span>Raramente faço algo por mim</span></label>
+              <label class="choice"><input type="radio" name="selfCare" value="Cuido de vez em quando" /><span>Cuido de vez em quando</span></label>
+              <label class="choice"><input type="radio" name="selfCare" value="Tenho uma rotina regular de cuidados" /><span>Tenho uma rotina regular de cuidados</span></label>
+              <label class="choice"><input type="radio" name="selfCare" value="Faço acompanhamento profissional frequente" /><span>Faço acompanhamento profissional frequente</span></label>
+            </fieldset>
+            <p class="field-error" id="self-care-error" role="alert"></p>
+          </div>
+
+          <div class="form-step" data-step="4" hidden>
+            <fieldset>
+              <legend>O que mais te motiva a buscar o procedimento?</legend>
+              <label class="choice"><input type="radio" name="motivation" value="Melhorar minha autoestima" required /><span>Melhorar minha autoestima</span></label>
+              <label class="choice"><input type="radio" name="motivation" value="Rejuvenescer / suavizar sinais da idade" /><span>Rejuvenescer / suavizar sinais da idade</span></label>
+              <label class="choice"><input type="radio" name="motivation" value="Corrigir algo que me incomoda" /><span>Corrigir algo que me incomoda</span></label>
+              <label class="choice"><input type="radio" name="motivation" value="Um momento especial (evento, mudança de vida)" /><span>Um momento especial (evento, mudança de vida)</span></label>
+              <label class="choice"><input type="radio" name="motivation" value="Outro" /><span>Outro</span></label>
+            </fieldset>
+            <p class="field-error" id="motivation-error" role="alert"></p>
+          </div>
+
+          <div class="form-step" data-step="5" hidden>
+            <fieldset>
+              <legend>Qual faixa de investimento seria confortável para você?</legend>
+              <label class="choice"><input type="radio" name="investment" value="Até R$ 3.000" required /><span>Até R$ 3.000</span></label>
+              <label class="choice"><input type="radio" name="investment" value="R$ 3.000 a R$ 6.000" /><span>R$ 3.000 a R$ 6.000</span></label>
+              <label class="choice"><input type="radio" name="investment" value="R$ 6.000 a R$ 10.000" /><span>R$ 6.000 a R$ 10.000</span></label>
+              <label class="choice"><input type="radio" name="investment" value="Acima de R$ 10.000" /><span>Acima de R$ 10.000</span></label>
+              <label class="choice"><input type="radio" name="investment" value="Prefiro avaliar após a consulta" /><span>Prefiro avaliar após a consulta</span></label>
+            </fieldset>
+            <p class="field-error" id="investment-error" role="alert"></p>
           </div>
 
           <input type="hidden" name="utm_source" />

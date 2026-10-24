@@ -4,7 +4,7 @@ test("renders the complete landing page without horizontal overflow", async ({ p
   await page.addInitScript(() => localStorage.setItem("meta_ads_consent_v1", "rejected"));
   await page.goto("/?utm_source=ig&utm_medium=social&utm_content=qa");
   await expect(page).toHaveTitle(/Rafael Dias/);
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("Harmonização Full Face");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Quando você ama seu reflexo");
   await expect(page.locator("main section")).toHaveCount(7);
 
   for (const width of [360, 390, 768, 1024, 1440]) {
@@ -20,16 +20,8 @@ test("renders the complete landing page without horizontal overflow", async ({ p
   }
 });
 
-test("opens, validates and advances the accessible lead form", async ({ page }) => {
+test("opens, validates and sends the qualified lead to WhatsApp", async ({ page }) => {
   await page.route("https://connect.facebook.net/**", (route) => route.fulfill({ status: 200, contentType: "application/javascript", body: "" }));
-  let storedLead;
-  let releaseLeadResponse;
-  const leadResponseGate = new Promise((resolve) => (releaseLeadResponse = resolve));
-  await page.route("**/api/leads", async (route) => {
-    storedLead = route.request().postDataJSON();
-    await leadResponseGate;
-    await route.fulfill({ status: 201, contentType: "application/json", body: JSON.stringify({ ok: true, leadId: "test-lead", eventId: "lead_test-lead" }) });
-  });
   await page.addInitScript(() => {
     localStorage.setItem("meta_ads_consent_v1", "accepted");
     window.open = (url) => {
@@ -46,69 +38,34 @@ test("opens, validates and advances the accessible lead form", async ({ page }) 
   await expect(page.locator("[data-progress='1']")).toHaveAttribute("aria-current", "step");
 
   await page.locator(".form-next").click();
-  await expect(page.locator("#name-error")).toContainText("Informe seu nome");
+  await expect(page.locator("#contact-error")).toContainText("Informe seu nome");
 
   await page.locator("#lead-name").fill("Paciente Teste");
-  await page.locator(".form-next").click();
   await page.locator("#lead-phone").fill("94991360408");
+  await page.locator("#lead-email").fill("paciente@exemplo.com");
   await page.locator(".form-next").click();
-  await page.locator("#lead-city").fill("Marabá");
+  await page.getByLabel("30 a 39 anos").check();
   await page.locator(".form-next").click();
+  await page.getByLabel("Tenho uma rotina regular de cuidados").check();
+  await page.locator(".form-next").click();
+  await page.getByLabel("Melhorar minha autoestima").check();
+  await page.locator(".form-next").click();
+  await page.getByLabel("R$ 6.000 a R$ 10.000").check();
 
   await expect(page.locator("[name='utm_source']")).toHaveValue("ig");
   await expect(page.locator("[name='utm_campaign']")).toHaveValue("smoke");
-  await page.getByLabel("Quero agendar uma avaliação de full face").check();
-  await page.locator("[name='privacy_consent']").check();
   const submit = page.locator(".form-submit");
   await expect(submit).toBeVisible();
-  await expect(submit).toHaveText(/Continuar/);
-  expect(await submit.textContent()).not.toContain("WhatsApp");
-  expect(storedLead).toBeUndefined();
+  await expect(submit).toHaveText(/Abrir WhatsApp/);
   await submit.click();
   await expect.poll(() => page.evaluate(() => window.__openedWhatsAppUrl || "")).toContain("https://wa.me/559491830101");
-  await expect.poll(() => storedLead?.name).toBe("Paciente Teste");
-  releaseLeadResponse();
-  expect(storedLead).toMatchObject({
-    phone: "(94) 99136-0408",
-    city: "Marabá",
-    interest: "Quero agendar uma avaliação de full face",
-    privacy_consent: true,
-    utm_source: "ig",
-    utm_campaign: "smoke",
-    meta_consent: true,
-  });
+  await expect.poll(() => page.evaluate(() => decodeURIComponent(window.__openedWhatsAppUrl || ""))).toContain("Faixa de investimento: R$ 6.000 a R$ 10.000");
   await expect.poll(() => page.evaluate(() => window.dataLayer.some((item) => item.event === "generate_lead"))).toBe(true);
   await expect.poll(() => page.evaluate(() => window.fbq?.queue?.some((args) => args[0] === "track" && args[1] === "Lead"))).toBe(true);
-  await expect.poll(() => page.evaluate(() => window.fbq?.queue?.some((args) => args[1] === "Lead" && args[3]?.eventID === "lead_test-lead"))).toBe(true);
 
   await page.getByRole("button", { name: "Fechar formulário" }).click();
   await expect(dialog).toBeHidden();
   await expect(cta).toBeFocused();
-});
-
-test("keeps WhatsApp independent when lead storage fails", async ({ page }) => {
-  await page.route("**/api/leads", (route) => route.fulfill({ status: 500, contentType: "application/json", body: JSON.stringify({ ok: false }) }));
-  await page.addInitScript(() => {
-    localStorage.setItem("meta_ads_consent_v1", "rejected");
-    window.open = (url) => {
-      window.__openedWhatsAppUrl = url;
-      return {};
-    };
-  });
-  await page.goto("/");
-  await page.locator(".js-open-form").first().click();
-  await page.locator("#lead-name").fill("Paciente Teste");
-  await page.locator(".form-next").click();
-  await page.locator("#lead-phone").fill("94991360408");
-  await page.locator(".form-next").click();
-  await page.locator("#lead-city").fill("Marabá");
-  await page.locator(".form-next").click();
-  await page.getByLabel("Quero tirar dúvidas sobre full face").check();
-  await page.locator("[name='privacy_consent']").check();
-  await page.locator(".form-submit").click();
-
-  await expect(page.locator(".form-status")).toContainText("Tente novamente");
-  await expect.poll(() => page.evaluate(() => window.__openedWhatsAppUrl || "")).toContain("https://wa.me/559491830101");
 });
 
 test("loads Meta Pixel and PageView immediately", async ({ page }) => {

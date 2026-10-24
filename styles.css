@@ -1534,6 +1534,11 @@ p {
   grid-template-columns: auto 1fr auto;
 }
 
+.form-progress--five-steps {
+  grid-template-columns: auto 1fr auto 1fr auto 1fr auto 1fr auto;
+  gap: 7px;
+}
+
 .form-progress span {
   color: rgba(190, 183, 171, 0.5);
   font-size: 9px;
@@ -1576,6 +1581,11 @@ p {
   font-size: 14px;
   outline: none;
   transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.form-step input[type="text"] + input,
+.form-step input[type="tel"] + input {
+  margin-top: 10px;
 }
 
 .form-step input::placeholder {

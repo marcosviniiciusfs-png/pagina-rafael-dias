@@ -239,17 +239,23 @@
     const step = steps[currentStep - 1];
     const name = form.elements.namedItem("name");
     const phone = form.elements.namedItem("phone");
+    const email = form.elements.namedItem("email");
+    const errorElement = step.querySelector(".field-error");
 
     if (currentStep === 1) {
       clearError(name);
-      if (name.value.trim().length < 2) return setError(name, "Informe seu nome para continuar.", step.querySelector(".field-error"));
-    }
-
-    if (currentStep === 2) {
       clearError(phone);
-      if (phone.value.replace(/\D/g, "").length < 10) return setError(phone, "Informe um WhatsApp com DDD.", step.querySelector(".field-error"));
+      clearError(email);
+      if (name.value.trim().length < 2) return setError(name, "Informe seu nome completo para continuar.", errorElement);
+      if (phone.value.replace(/\D/g, "").length < 10) return setError(phone, "Informe um WhatsApp com DDD.", errorElement);
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) return setError(email, "Informe um e-mail válido.", errorElement);
+      return true;
     }
 
+    const choice = step.querySelector('input[type="radio"]');
+    const answered = step.querySelector('input[type="radio"]:checked');
+    clearError(choice);
+    if (!answered) return setError(choice, "Escolha uma opção para continuar.", errorElement);
     return true;
   };
 
@@ -333,6 +339,13 @@
       "",
       `Nome: ${values.name}`,
       `WhatsApp informado: ${values.phone}`,
+      `E-mail: ${values.email}`,
+      "",
+      "Perfil para avaliação:",
+      `Faixa etária: ${values.ageRange}`,
+      `Autocuidado: ${values.selfCare}`,
+      `Motivação: ${values.motivation}`,
+      `Faixa de investimento: ${values.investment}`,
     ]
       .filter(Boolean)
       .join("\n");
