@@ -1228,7 +1228,7 @@ p {
 
 .footer p {
   margin: 0;
-  color: rgba(190, 183, 171, 0.65);
+  color: #fff;
   font-size: 9px;
   text-align: center;
 }
@@ -1240,11 +1240,15 @@ p {
 }
 
 .footer nav a {
-  color: var(--muted);
+  color: #fff;
   font-size: 9px;
   letter-spacing: 0.05em;
   text-decoration-color: rgba(201, 165, 90, 0.45);
   text-underline-offset: 4px;
+}
+
+.footer .brand__wordmark small {
+  color: #fff;
 }
 
 .footer nav .footer__instagram {
