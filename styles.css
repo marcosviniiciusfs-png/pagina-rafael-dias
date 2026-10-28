@@ -1269,6 +1269,7 @@ p {
    para mídia, tipografia e elementos que precisam de contraste máximo. */
 .hero__veil {
   background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     linear-gradient(90deg, rgba(56, 35, 7, 0.82) 0%, rgba(104, 66, 13, 0.56) 48%, rgba(170, 111, 22, 0.28) 100%),
     linear-gradient(180deg, rgba(75, 47, 8, 0.38), transparent 45%, rgba(75, 47, 8, 0.64));
 }
@@ -1959,6 +1960,7 @@ p {
 
   .hero__veil {
     background:
+      linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
       linear-gradient(180deg, rgba(0, 0, 0, 0.63), rgba(0, 0, 0, 0.4) 30%, rgba(0, 0, 0, 0.93) 72%, rgba(0, 0, 0, 0.98)),
       rgba(0, 0, 0, 0.22);
   }
