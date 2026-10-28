@@ -1,15 +1,15 @@
 :root {
-  --bg: #fbfaf7;
-  --bg-soft: #f0ede7;
-  --surface: #ffffff;
-  --surface-2: #e9e4dc;
-  --text: #211f1a;
-  --muted: #706a60;
-  --gold: #a77b42;
-  --gold-light: #c79b5c;
-  --gold-dark: #79562d;
-  --line: rgba(88, 67, 39, 0.2);
-  --line-strong: #a77b42;
+  --bg: #f6e8cf;
+  --bg-soft: #e6bd78;
+  --surface: #fff8ea;
+  --surface-2: #efd39d;
+  --text: #21180d;
+  --muted: #59472f;
+  --gold: #a87320;
+  --gold-light: #c9953d;
+  --gold-dark: #6b4611;
+  --line: rgba(72, 47, 14, 0.28);
+  --line-strong: #8f5d13;
   --container: 1180px;
   --serif: "Cormorant Garamond", Georgia, serif;
   --sans: "Montserrat", Arial, sans-serif;
@@ -1263,6 +1263,148 @@ p {
   fill: none;
   stroke: var(--gold-light);
   stroke-width: 1.6;
+}
+
+/* Paleta dourada: as grandes dobras permanecem claras e o escuro fica reservado
+   para mídia, tipografia e elementos que precisam de contraste máximo. */
+.hero__veil {
+  background:
+    linear-gradient(90deg, rgba(56, 35, 7, 0.82) 0%, rgba(104, 66, 13, 0.56) 48%, rgba(170, 111, 22, 0.28) 100%),
+    linear-gradient(180deg, rgba(75, 47, 8, 0.38), transparent 45%, rgba(75, 47, 8, 0.64));
+}
+
+.results {
+  background:
+    linear-gradient(180deg, rgba(255, 248, 234, 0.45), transparent 24%),
+    #dfb56d;
+}
+
+.results .section-heading {
+  background: rgba(255, 248, 234, 0.78);
+}
+
+.testimonial {
+  background: #f6e8cf;
+}
+
+.experience {
+  color: var(--text);
+  background:
+    radial-gradient(circle at 78% 18%, rgba(255, 245, 211, 0.38), transparent 28rem),
+    #c9953d;
+}
+
+.experience .overline,
+.experience h2 em {
+  color: var(--gold-dark);
+}
+
+.experience .experience__copy > p:last-of-type {
+  color: var(--muted);
+}
+
+.experience .portrait-video {
+  border-color: rgba(85, 52, 9, 0.6);
+  background: #fff8ea;
+}
+
+.doctor {
+  background:
+    radial-gradient(circle at 75% 35%, rgba(180, 120, 31, 0.18), transparent 30rem),
+    var(--bg);
+}
+
+.technology {
+  background: #e8c684;
+}
+
+.technology .overline,
+.technology h2 em {
+  color: var(--gold-dark);
+}
+
+.technology .overline::before {
+  background: var(--gold-dark);
+}
+
+.technology__visual--illustration::after {
+  background: linear-gradient(100deg, rgba(255, 248, 234, 0.16), rgba(142, 93, 17, 0.16));
+}
+
+.technology__frame {
+  border-color: rgba(105, 68, 16, 0.72);
+  color: #fff8ea;
+  background: rgba(70, 43, 7, 0.78);
+}
+
+.technology__frame small {
+  color: rgba(255, 248, 234, 0.78);
+}
+
+.final-cta {
+  color: var(--text);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 246, 215, 0.36), transparent 28rem),
+    #b9802a;
+}
+
+.final-cta__content > p:not(.overline, .final-cta__note),
+.final-cta__note {
+  color: rgba(33, 24, 13, 0.8);
+}
+
+.final-cta .overline,
+.final-cta h2 em {
+  color: var(--gold-dark);
+}
+
+.final-cta .overline::before {
+  background: var(--gold-dark);
+}
+
+.final-cta .button--secondary {
+  border-color: rgba(33, 24, 13, 0.65);
+  color: var(--text);
+}
+
+.final-cta .button--secondary:hover {
+  color: #fff8ea;
+  background: var(--text);
+}
+
+.footer {
+  border-color: rgba(74, 45, 8, 0.42);
+  background: #c28a34;
+}
+
+.footer p,
+.footer nav a,
+.footer .brand__wordmark small,
+.footer .brand__wordmark strong {
+  color: #21180d;
+}
+
+.footer .brand__wordmark strong em {
+  color: #6b4611;
+}
+
+.footer__instagram svg {
+  stroke: #21180d;
+}
+
+.cookie-consent {
+  border-color: var(--gold-dark);
+  color: var(--text);
+  background: #fff8ea;
+  box-shadow: 0 20px 70px rgba(80, 49, 8, 0.3);
+}
+
+.cookie-consent__copy p {
+  color: var(--muted);
+}
+
+.cookie-consent__copy a {
+  color: var(--gold-dark);
 }
 
 /* DireÃ§Ã£o editorial: blocos claros alternados, com contraste pontual nos momentos de maior impacto. */
