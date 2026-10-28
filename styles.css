@@ -1525,6 +1525,21 @@ p {
   background: #11100f;
 }
 
+.footer p,
+.footer nav a,
+.footer .brand__wordmark small,
+.footer .brand__wordmark strong {
+  color: #f8f5ef;
+}
+
+.footer .brand__wordmark strong em {
+  color: var(--gold-light);
+}
+
+.footer__instagram svg {
+  stroke: var(--gold-light);
+}
+
 .cookie-consent {
   position: fixed;
   z-index: 9000;
