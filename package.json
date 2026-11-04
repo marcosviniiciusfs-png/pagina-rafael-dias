@@ -1,8 +1,8 @@
 {
-  "name": "lp-dr-sidney-colares",
+  "name": "lp-dr-rafael-dias",
   "version": "1.0.0",
   "private": true,
-  "description": "Landing page responsiva para captação de avaliações do Dr. Sidney Colares.",
+  "description": "Landing page responsiva para captação de avaliações do Dr. Rafael Dias.",
   "scripts": {
     "dev": "http-server . -p 4173 -c-1",
     "test": "playwright test",

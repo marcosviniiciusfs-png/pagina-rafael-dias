@@ -229,4 +229,4 @@ Critérios de aceite:
 - Destino dos leads (CRM, webhook, email ou API).
 - IDs próprios de GTM/pixels.
 - Política de privacidade e base legal/consentimento.
-- Confirmação se a intenção é réplica fiel ou mesma estrutura com identidade de Sidney.
+- Confirmação se a intenção é réplica fiel ou mesma estrutura com identidade de Rafael Dias.

@@ -1,13 +1,13 @@
-# LP de rinoplastia — Dr. Sidney Colares
+# LP de rinoplastia — Dr. Rafael Dias
 
-Landing page de rinoplastia estática e responsiva, criada para o Dr. Sidney Colares, com identidade própria em preto, off-white e dourado. A estrutura persuasiva da página de referência foi preservada sem copiar sua marca, seus textos ou seus ativos.
+Landing page de rinoplastia estática e responsiva, criada para o Dr. Rafael Dias, com identidade própria em preto, off-white e dourado. A estrutura persuasiva da página de referência foi preservada sem copiar sua marca, seus textos ou seus ativos.
 
 ## O que está implementado
 
 - Hero em vídeo com autoridade, CTA e controle acessível de pausa.
 - Carrossel contínuo com seis casos e alternativa manual no mobile.
 - Depoimento em vídeo, bloco de experiência, biografia, credenciais e tecnologia.
-- Logo oficial do Dr. Sidney aplicada no cabeçalho, formulário, apresentação profissional e rodapé.
+- Logo oficial do Dr. Rafael aplicada no cabeçalho, formulário, apresentação profissional e rodapé.
 - CTA final com formulário acessível em quatro etapas e atalho para WhatsApp.
 - Registro do lead em Cloudflare D1 antes do encaminhamento ao WhatsApp.
 - Pixel da Meta carregado imediatamente em todas as visitas e API de Conversões no envio do formulário. O evento `Lead` usa o mesmo `event_id` no navegador e no servidor para deduplicação.
@@ -37,8 +37,8 @@ npm test
 
 O deploy direto utiliza somente `index.html`, `privacidade.html`, `styles.css`, `app.js`, `config.js`, `_headers` e a pasta `assets`. O cabeçalho `X-Robots-Tag: noindex, nofollow` permanece ativo enquanto houver pendências profissionais, jurídicas e de autorização de imagem.
 
-- Projeto: `dr-sidney-colares`
-- Produção: <https://dr-sidney-colares.pages.dev/>
+- Hospedagem atual: GitHub Pages (workflow `.github/workflows/deploy-pages.yml`)
+- Produção: <https://institutorafaeldias.hurtzcompany.com/>
 - Branch de produção: `main`
 - Método: Direct Upload pelo Wrangler
 
