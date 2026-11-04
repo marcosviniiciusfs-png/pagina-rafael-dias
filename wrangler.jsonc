@@ -1,18 +1,10 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "dr-sidney-colares",
+  "name": "dr-rafael-dias",
   "pages_build_output_dir": "./dist",
   "compatibility_date": "2026-09-03",
   "vars": {
     "META_PIXEL_ID": "2258593511572731",
     "META_GRAPH_API_VERSION": "v25.0"
-  },
-  "d1_databases": [
-    {
-      "binding": "LEADS_DB",
-      "database_name": "dr-sidney-leads",
-      "database_id": "824a02f3-9b05-40ce-8c5f-6d9686243110",
-      "migrations_dir": "migrations"
-    }
-  ]
+  }
 }

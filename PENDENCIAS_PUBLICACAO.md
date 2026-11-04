@@ -5,21 +5,20 @@ Este arquivo separa o que já funciona tecnicamente do que ainda depende de conf
 ## 1. Identidade e dados profissionais — bloqueante
 
 - Confirmar por certidão o registro exibido: `CRBM-5217/PA` (informado pelo Dr. Rafael Dias; exibido no rodapé do site).
-- Confirmar a forma aprovada de apresentação da especialidade. A versão atual usa “cirurgião-dentista e traumatologista bucomaxilofacial”, sem apresentá-lo como médico, cirurgião plástico ou otorrinolaringologista.
-- WhatsApp principal configurado: `+55 94 9183-0101`.
+- Confirmar a forma aprovada de apresentação da profissão e da especialidade do Dr. Rafael Dias (biomedicina estética / harmonização facial), conforme as normas do CRBM.
+- Confirmar que o WhatsApp configurado em `config.js` é o número oficial do Instituto Rafael Dias.
 - A logo oficial em PNG foi fornecida e aplicada. Solicitar também o arquivo vetorial original para futuras ampliações e fornecer um retrato aprovado do profissional; enquanto não houver retrato, o bloco “Sobre” exibe a marca oficial.
 
-Consultas públicas recomendadas: [busca de profissionais do CFO](https://busca-profissionais.cfo.org.br/) e [consulta de inscritos do CRO-PA](https://cro-pa.implanta.net.br/ServicosOnline/Publico/ConsultaInscritos).
+Confirmar o registro exibido (`CRBM-5217/PA`) na consulta pública do conselho profissional.
 
 ## 2. Casos, depoimentos e autorização de imagem — bloqueante
 
 - Solicitar os seis comparativos originais, sem captura de tela, textos da interface ou compressão do Instagram.
 - Confirmar que cada paciente assinou autorização/TCLE específico para publicação e que cada caso foi realizado pelo profissional identificado.
 - Validar a exibição de nome e número de inscrição junto a todas as peças clínicas.
-- Revisar se os vídeos mostram etapas de procedimento. A Resolução CFO 196/2019 permite imagens de diagnóstico e resultado final sob condições, mas veda a publicação de imagens ou vídeos do transcurso do procedimento fora do contexto científico previsto na norma.
+- Revisar se os vídeos mostram etapas de procedimento e se estão de acordo com as normas de publicidade do conselho profissional (CRBM/CFBM).
 - Manter linguagem sem promessa ou garantia de resultado; cada caso é individual.
 
-Referências oficiais: [Resolução CFO 196/2019](https://website.cfo.org.br/resolucao-cfo-196-2019/) e [orientação do CFO para publicações em redes sociais](https://website.cfo.org.br/redes-sociais-na-odontologia-fique-atento-as-normas-eticas-e-acerte-na-publicacao-dos-conteudos/).
 
 ## 3. Mapa das mídias usadas no protótipo
 
@@ -32,7 +31,6 @@ Referências oficiais: [Resolução CFO 196/2019](https://website.cfo.org.br/res
 | Retrato | Logo oficial como solução temporária | O link `DbrNFcgAOsF` não pertence ao perfil oficial informado. Fornecer fotografia original aprovada. |
 | Tecnologia | Reuso de `hero.mp4` | O reel `DWZDOWjjVLV` não ficou disponível para validação. Fornecer o vídeo original específico de tecnologia. |
 
-Nenhum ativo do site do Dr. Jaziel foi incorporado à implementação.
 
 ## 4. Conversão e integrações — bloqueante para operação completa
 
@@ -51,4 +49,4 @@ Nenhum ativo do site do Dr. Jaziel foi incorporado à implementação.
 - Substituir fontes do Google por arquivos locais se a política de privacidade adotada assim exigir.
 - Definir domínio final e então adicionar `canonical`, `og:url`, `og:image`, sitemap, robots e imagens sociais.
 - Substituir os posters derivados dos arquivos comprimidos, otimizar os originais e validar desempenho no ambiente de hospedagem.
-- Fazer revisão final de conteúdo, CRO/CFO, acessibilidade e dispositivos reais antes de remover o caráter de protótipo.
+- Fazer revisão final de conteúdo, CRBM, acessibilidade e dispositivos reais antes de remover o caráter de protótipo.
