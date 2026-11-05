@@ -2318,5 +2318,5 @@ p {
 }
 
 .hero__veil {
-  display: none;
+  background: rgba(0, 0, 0, 0.1);
 }
