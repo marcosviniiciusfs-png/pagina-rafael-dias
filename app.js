@@ -94,7 +94,7 @@
   if (carousel && carouselTrack && !reduceMotion.matches) {
     // A faixa tem os casos duplicados; ao passar da metade voltamos ao início sem salto visível.
     const autoSpeed = 0.04; // px por ms
-    const resumeDelay = 2200;
+    const resumeDelay = 1200;
     let position = carousel.scrollLeft;
     let previousTime = 0;
     let visible = true;
@@ -149,12 +149,20 @@
     // Evita que o navegador arraste a própria imagem.
     carousel.addEventListener("dragstart", (event) => event.preventDefault());
 
-    // Toque: a rolagem horizontal é nativa (com inércia); só pausamos a automática.
-    carousel.addEventListener("touchstart", () => {
-      touching = true;
-      pauseAuto();
+    // Toque: a rolagem horizontal é nativa (com inércia). Um toque simples não interrompe a
+    // rolagem automática; ela só pausa enquanto a pessoa realmente arrasta.
+    let touchStartX = 0;
+    carousel.addEventListener("touchstart", (event) => {
+      touchStartX = event.touches[0].clientX;
+    }, { passive: true });
+    carousel.addEventListener("touchmove", (event) => {
+      if (!touching && Math.abs(event.touches[0].clientX - touchStartX) > 8) {
+        touching = true;
+        pauseAuto();
+      }
     }, { passive: true });
     const endTouch = () => {
+      if (!touching) return;
       touching = false;
       resumeAutoLater();
     };
@@ -188,24 +196,59 @@
     carousel.addEventListener("pointercancel", stopMouseDrag);
   }
 
-  // Dica de rolagem no topo (mobile): a página "puxa" para baixo e volta a cada 5 s.
+  // Dica de rolagem no topo (mobile): a página desce um pouco e volta, a cada 5 s.
   const scrollHintQuery = window.matchMedia("(max-width: 767px)");
-  const mainElement = document.querySelector("main");
-  if (mainElement && !reduceMotion.matches) {
+  if (!reduceMotion.matches) {
     let touchingScreen = false;
+    let hintRunning = false;
     window.addEventListener("touchstart", () => (touchingScreen = true), { passive: true });
     window.addEventListener("touchend", () => (touchingScreen = false), { passive: true });
     window.addEventListener("touchcancel", () => (touchingScreen = false), { passive: true });
-    mainElement.addEventListener("animationend", (event) => {
-      if (event.animationName === "scroll-hint") mainElement.classList.remove("is-scroll-hint");
-    });
-    window.setInterval(() => {
-      if (!scrollHintQuery.matches || touchingScreen || document.hidden) return;
+
+    const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+    const easeInOut = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+
+    const playScrollHint = () => {
+      const amplitude = 96;
+      const downMs = 520;
+      const upMs = 720;
+      let startTime = 0;
+      let lastY = 0;
+      hintRunning = true;
+
+      const finish = () => {
+        hintRunning = false;
+      };
+      const step = (time) => {
+        if (!startTime) startTime = time;
+        // Interrompe se a pessoa tocou na tela, rolou por conta própria ou abriu o formulário.
+        if (touchingScreen || document.body.classList.contains("modal-open") || Math.abs(window.scrollY - lastY) > 3) {
+          finish();
+          return;
+        }
+        const elapsed = time - startTime;
+        let y;
+        if (elapsed < downMs) y = amplitude * easeOut(elapsed / downMs);
+        else if (elapsed < downMs + upMs) y = amplitude * (1 - easeInOut((elapsed - downMs) / upMs));
+        else {
+          window.scrollTo({ top: 0, behavior: "instant" });
+          finish();
+          return;
+        }
+        lastY = Math.round(y);
+        window.scrollTo({ top: lastY, behavior: "instant" });
+        requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+
+    const maybePlayScrollHint = () => {
+      if (hintRunning || !scrollHintQuery.matches || touchingScreen || document.hidden) return;
       if (window.scrollY > 4 || document.body.classList.contains("modal-open")) return;
-      mainElement.classList.remove("is-scroll-hint");
-      void mainElement.offsetWidth;
-      mainElement.classList.add("is-scroll-hint");
-    }, 5000);
+      playScrollHint();
+    };
+    window.setTimeout(maybePlayScrollHint, 2500);
+    window.setInterval(maybePlayScrollHint, 5000);
   }
 
   // Vídeos: todos tocam sozinhos; o som é exclusivo (só um vídeo com áudio por vez).
@@ -222,6 +265,8 @@
       const on = Boolean(video && !video.muted);
       button.setAttribute("aria-pressed", String(on));
       button.setAttribute("aria-label", on ? "Desativar som do vídeo" : "Ativar som do vídeo");
+      const label = button.querySelector(".sound-toggle__label");
+      if (label) label.textContent = on ? "Som ligado" : "Ativar som";
     });
   };
 
@@ -299,7 +344,7 @@
       },
       { threshold: [0, 0.1, 0.35, 0.6] },
     );
-    soundVideos.forEach((video) => videoObserver.observe(video));
+    document.querySelectorAll("video").forEach((video) => videoObserver.observe(video));
   }
 
   // Primeiro toque/clique: libera o som do depoimento se o autoplay com áudio foi bloqueado.

@@ -67,10 +67,8 @@
           muted
           loop
           playsinline
-          preload="metadata"
-          poster="assets/media/rafael-hero-poster.jpg"
+          preload="auto"
           data-track-video="hero"
-          data-sound-video="hero"
           tabindex="-1"
         >
           <source media="(max-width: 767px)" src="assets/media/rafael-hero-mobile.mp4" type="video/mp4" />
@@ -101,7 +99,6 @@
             <svg class="button__hand" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 10V9a2 2 0 0 0-4 0v1M10 9.5V4a2 2 0 0 0-4 0v10M18 11v-1a2 2 0 0 0-4 0M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" /></svg>
           </button>
         </div>
-        <button class="sound-toggle sound-toggle--hero" type="button" data-sound-toggle="hero" aria-pressed="false" aria-label="Ativar som do vídeo"><svg class="sound-toggle__on" aria-hidden="true" viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5z" /><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" /></svg><svg class="sound-toggle__off" aria-hidden="true" viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5z" /><path d="m16 9 6 6M22 9l-6 6" /></svg></button>
 
         <a class="hero__scroll" href="#resultados" aria-label="Ir para resultados">
           <span>Veja casos de full face</span>
@@ -191,7 +188,7 @@
             <video autoplay muted loop playsinline preload="metadata" data-track-video="experience" data-sound-video="experience" tabindex="-1">
               <source src="assets/media/rafael-presentation.mp4" type="video/mp4" />
             </video>
-            <button class="sound-toggle sound-toggle--corner" type="button" data-sound-toggle="experience" aria-pressed="false" aria-label="Ativar som do vídeo"><svg class="sound-toggle__on" aria-hidden="true" viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5z" /><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" /></svg><svg class="sound-toggle__off" aria-hidden="true" viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5z" /><path d="m16 9 6 6M22 9l-6 6" /></svg></button>
+            <button class="sound-toggle sound-toggle--corner" type="button" data-sound-toggle="experience" aria-pressed="false" aria-label="Ativar som do vídeo"><svg class="sound-toggle__on" aria-hidden="true" viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5z" /><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" /></svg><svg class="sound-toggle__off" aria-hidden="true" viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5z" /><path d="m16 9 6 6M22 9l-6 6" /></svg><span class="sound-toggle__label">Ativar som</span></button>
             <span class="media-index" aria-hidden="true">02 / 03</span>
           </div>
           <div class="experience__copy reveal">
@@ -222,10 +219,9 @@
 
           </div>
           <figure class="doctor__portrait reveal">
-            <video class="doctor__video" data-sound-video="doctor" autoplay muted loop playsinline preload="metadata" poster="assets/media/rafael-dias-profile-poster.jpg" tabindex="-1">
+            <video class="doctor__video" autoplay muted loop playsinline preload="metadata" poster="assets/media/rafael-dias-profile-poster.jpg" tabindex="-1">
               <source src="assets/media/rafael-dias-profile.mp4" type="video/mp4" />
             </video>
-            <button class="sound-toggle sound-toggle--corner" type="button" data-sound-toggle="doctor" aria-pressed="false" aria-label="Ativar som do vídeo"><svg class="sound-toggle__on" aria-hidden="true" viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5z" /><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" /></svg><svg class="sound-toggle__off" aria-hidden="true" viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5z" /><path d="m16 9 6 6M22 9l-6 6" /></svg></button>
             <figcaption>
               <strong>Instituto Rafael Dias</strong>
               <span>Harmonização facial</span>
