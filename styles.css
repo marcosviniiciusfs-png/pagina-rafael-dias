@@ -403,7 +403,6 @@ p {
   object-fit: cover;
   object-position: center 44%;
   scale: 1.01;
-  opacity: 0.1;
 }
 
 .hero__veil {
@@ -2316,4 +2315,8 @@ p {
   .doctor__portrait {
     border: 1px solid ButtonText;
   }
+}
+
+.hero__veil {
+  display: none;
 }
