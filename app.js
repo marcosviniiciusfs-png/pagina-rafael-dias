@@ -92,53 +92,229 @@
   carousel?.addEventListener("keydown", trackCarouselInteraction, { once: true });
 
   if (carousel && carouselTrack && !reduceMotion.matches) {
-    let dragging = false;
-    let startX = 0;
-    let startScroll = 0;
+    // A faixa tem os casos duplicados; ao passar da metade voltamos ao início sem salto visível.
+    const autoSpeed = 0.04; // px por ms
+    const resumeDelay = 2200;
+    let position = carousel.scrollLeft;
     let previousTime = 0;
-    const autoSpeed = 0.032;
+    let visible = true;
+    let mouseDragging = false;
+    let touching = false;
+    let resumeTimer = 0;
+    let mouseStartX = 0;
+    let mouseStartScroll = 0;
+
+    const halfTrack = () => carouselTrack.scrollWidth / 2;
+    const wrap = () => {
+      const half = halfTrack();
+      if (half <= 0) return;
+      if (position >= half) position -= half;
+      if (position < 0) position += half;
+    };
+
+    const pauseAuto = () => {
+      window.clearTimeout(resumeTimer);
+      resumeTimer = 0;
+    };
+    const resumeAutoLater = () => {
+      pauseAuto();
+      resumeTimer = window.setTimeout(() => {
+        resumeTimer = 0;
+        position = carousel.scrollLeft;
+        wrap();
+      }, resumeDelay);
+    };
+    const isAutoPaused = () => mouseDragging || touching || resumeTimer !== 0 || !visible || document.hidden;
 
     const advanceCarousel = (time) => {
-      if (previousTime) {
-        const halfTrack = carouselTrack.scrollWidth / 2;
-        if (!dragging && halfTrack > 0) {
-          carousel.scrollLeft += (time - previousTime) * autoSpeed;
-          if (carousel.scrollLeft >= halfTrack) carousel.scrollLeft -= halfTrack;
-        }
+      if (previousTime && !isAutoPaused() && halfTrack() > 0) {
+        // `position` guarda o valor fracionário: scrollLeft é arredondado em vários celulares,
+        // e somar frações direto nele faria a rolagem travar.
+        position += Math.min(time - previousTime, 64) * autoSpeed;
+        wrap();
+        carousel.scrollLeft = position;
       }
       previousTime = time;
       requestAnimationFrame(advanceCarousel);
     };
     requestAnimationFrame(advanceCarousel);
 
-    // Evita que o navegador arraste a própria imagem e preserve o gesto para o carrossel.
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver((entries) => {
+        visible = entries[entries.length - 1].isIntersecting;
+        if (visible) position = carousel.scrollLeft;
+      }).observe(carousel);
+    }
+
+    // Evita que o navegador arraste a própria imagem.
     carousel.addEventListener("dragstart", (event) => event.preventDefault());
 
+    // Toque: a rolagem horizontal é nativa (com inércia); só pausamos a automática.
+    carousel.addEventListener("touchstart", () => {
+      touching = true;
+      pauseAuto();
+    }, { passive: true });
+    const endTouch = () => {
+      touching = false;
+      resumeAutoLater();
+    };
+    carousel.addEventListener("touchend", endTouch, { passive: true });
+    carousel.addEventListener("touchcancel", endTouch, { passive: true });
+    carousel.addEventListener("scroll", () => {
+      if (touching || resumeTimer) resumeAutoLater();
+    }, { passive: true });
+
+    // Mouse: arraste manual com o botão esquerdo.
     carousel.addEventListener("pointerdown", (event) => {
-      // No desktop, apenas o botão esquerdo inicia o arraste. Em telas touch,
-      // tocar e segurar mantém o mesmo comportamento.
-      if (event.pointerType === "mouse" && event.button !== 0) return;
-      dragging = true;
-      startX = event.clientX;
-      startScroll = carousel.scrollLeft;
+      if (event.pointerType !== "mouse" || event.button !== 0) return;
+      mouseDragging = true;
+      mouseStartX = event.clientX;
+      mouseStartScroll = carousel.scrollLeft;
       carousel.classList.add("is-dragging");
       carousel.setPointerCapture?.(event.pointerId);
     });
-
     carousel.addEventListener("pointermove", (event) => {
-      if (!dragging) return;
-      carousel.scrollLeft = startScroll - (event.clientX - startX) * 1.35;
+      if (!mouseDragging) return;
+      carousel.scrollLeft = mouseStartScroll - (event.clientX - mouseStartX) * 1.35;
     });
-
-    const stopDragging = (event) => {
-      if (!dragging) return;
-      dragging = false;
+    const stopMouseDrag = (event) => {
+      if (!mouseDragging) return;
+      mouseDragging = false;
       carousel.classList.remove("is-dragging");
       if (event?.pointerId !== undefined && carousel.hasPointerCapture?.(event.pointerId)) carousel.releasePointerCapture(event.pointerId);
+      position = carousel.scrollLeft;
     };
-    carousel.addEventListener("pointerup", stopDragging);
-    carousel.addEventListener("pointercancel", stopDragging);
+    carousel.addEventListener("pointerup", stopMouseDrag);
+    carousel.addEventListener("pointercancel", stopMouseDrag);
   }
+
+  // Dica de rolagem no topo (mobile): a página "puxa" para baixo e volta a cada 5 s.
+  const scrollHintQuery = window.matchMedia("(max-width: 767px)");
+  const mainElement = document.querySelector("main");
+  if (mainElement && !reduceMotion.matches) {
+    let touchingScreen = false;
+    window.addEventListener("touchstart", () => (touchingScreen = true), { passive: true });
+    window.addEventListener("touchend", () => (touchingScreen = false), { passive: true });
+    window.addEventListener("touchcancel", () => (touchingScreen = false), { passive: true });
+    mainElement.addEventListener("animationend", (event) => {
+      if (event.animationName === "scroll-hint") mainElement.classList.remove("is-scroll-hint");
+    });
+    window.setInterval(() => {
+      if (!scrollHintQuery.matches || touchingScreen || document.hidden) return;
+      if (window.scrollY > 4 || document.body.classList.contains("modal-open")) return;
+      mainElement.classList.remove("is-scroll-hint");
+      void mainElement.offsetWidth;
+      mainElement.classList.add("is-scroll-hint");
+    }, 5000);
+  }
+
+  // Vídeos: todos tocam sozinhos; o som é exclusivo (só um vídeo com áudio por vez).
+  const soundVideos = [...document.querySelectorAll("video[data-sound-video]")];
+  const soundButtons = new Map(
+    [...document.querySelectorAll("[data-sound-toggle]")].map((button) => [button.dataset.soundToggle, button]),
+  );
+  const testimonialVideo = soundVideos.find((video) => video.dataset.soundVideo === "testimonial");
+  let testimonialAutoUnmuted = false;
+
+  const updateSoundButtons = () => {
+    soundButtons.forEach((button, name) => {
+      const video = soundVideos.find((item) => item.dataset.soundVideo === name);
+      const on = Boolean(video && !video.muted);
+      button.setAttribute("aria-pressed", String(on));
+      button.setAttribute("aria-label", on ? "Desativar som do vídeo" : "Ativar som do vídeo");
+    });
+  };
+
+  const setActiveAudio = (activeVideo) => {
+    soundVideos.forEach((video) => {
+      const shouldMute = video !== activeVideo;
+      if (video.muted !== shouldMute) video.muted = shouldMute;
+      if (!shouldMute) video.volume = 1;
+    });
+    updateSoundButtons();
+  };
+
+  soundButtons.forEach((button, name) => {
+    const video = soundVideos.find((item) => item.dataset.soundVideo === name);
+    button.addEventListener("click", () => {
+      if (!video) return;
+      const enable = video.muted;
+      setActiveAudio(enable ? video : null);
+      if (enable && video.paused) video.play().catch(() => {});
+      track("video_control", { video: name, action: enable ? "unmute" : "mute" });
+    });
+  });
+
+  // Controles nativos do depoimento: se o som for ligado por lá, silencia os demais.
+  soundVideos.forEach((video) => {
+    video.addEventListener("volumechange", () => {
+      if (!video.muted) {
+        soundVideos.forEach((other) => {
+          if (other !== video && !other.muted) other.muted = true;
+        });
+      }
+      updateSoundButtons();
+    });
+  });
+
+  const heroManuallyPaused = () => heroToggle?.getAttribute("aria-pressed") === "true";
+
+  const playVideo = (video) => {
+    const attempt = video.play();
+    if (attempt?.catch) attempt.catch(() => {});
+  };
+
+  const tryTestimonialWithSound = () => {
+    if (!testimonialVideo || testimonialAutoUnmuted) return;
+    if (soundVideos.some((video) => video !== testimonialVideo && !video.muted)) return;
+    testimonialAutoUnmuted = true;
+    testimonialVideo.muted = false;
+    const attempt = testimonialVideo.play();
+    if (attempt?.catch) {
+      attempt.catch(() => {
+        // O navegador bloqueou som automático: segue mudo e libera no primeiro toque na página.
+        testimonialVideo.muted = true;
+        playVideo(testimonialVideo);
+        testimonialAutoUnmuted = false;
+      });
+    }
+  };
+
+  if ("IntersectionObserver" in window) {
+    const videoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+          const inView = entry.intersectionRatio >= 0.35;
+          if (inView) {
+            if (video === heroVideo && (heroManuallyPaused() || reduceMotion.matches)) return;
+            if (video === testimonialVideo) tryTestimonialWithSound();
+            playVideo(video);
+          } else if (entry.intersectionRatio < 0.1) {
+            if (!video.muted) setActiveAudio(null);
+            if (video === heroVideo && heroManuallyPaused()) return;
+            video.pause();
+          }
+        });
+      },
+      { threshold: [0, 0.1, 0.35, 0.6] },
+    );
+    soundVideos.forEach((video) => videoObserver.observe(video));
+  }
+
+  // Primeiro toque/clique: libera o som do depoimento se o autoplay com áudio foi bloqueado.
+  const unlockTestimonialSound = () => {
+    if (!testimonialVideo || !testimonialVideo.muted || testimonialAutoUnmuted) return;
+    if (soundVideos.some((video) => video !== testimonialVideo && !video.muted)) return;
+    const rect = testimonialVideo.getBoundingClientRect();
+    const inView = rect.top < window.innerHeight * 0.65 && rect.bottom > window.innerHeight * 0.35;
+    if (!inView || testimonialVideo.paused) return;
+    testimonialAutoUnmuted = true;
+    setActiveAudio(testimonialVideo);
+  };
+  ["pointerdown", "touchend", "click", "keydown"].forEach((type) => {
+    window.addEventListener(type, unlockTestimonialSound, { passive: true });
+  });
 
   document.querySelectorAll("video[data-track-video]").forEach((video) => {
     const videoName = video.dataset.trackVideo;
