@@ -380,7 +380,7 @@ p {
 .hero {
   position: relative;
   display: flex;
-  background: #050505 url("assets/media/rafael-hero-poster.jpg") center 44% / cover no-repeat;
+  background: #050505 url("assets/media/rafael-hero-poster.jpg") center 30% / cover no-repeat;
   min-height: min(820px, 100svh);
   overflow: hidden;
   align-items: flex-end;
@@ -402,7 +402,7 @@ p {
 
 .hero__video {
   object-fit: cover;
-  object-position: center 44%;
+  object-position: center 30%;
   scale: 1.01;
 }
 
