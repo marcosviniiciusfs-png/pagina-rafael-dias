@@ -499,11 +499,32 @@ p {
 
 .hero__lead {
   max-width: 680px;
-  margin: 24px 0 25px;
+  margin: 24px 0 18px;
   color: rgba(248, 245, 239, 0.82);
   font-size: 16px;
   font-weight: 300;
   line-height: 1.65;
+}
+
+.hero__proof {
+  margin: 0 0 16px;
+  color: #fff;
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+}
+
+.hero__proof strong {
+  background: linear-gradient(135deg, #ffe08a 0%, #f5c542 55%, #ffdf7e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 1.35em;
+  font-weight: 700;
+  text-shadow: none;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.45));
 }
 
 .hero__content h1 em,
@@ -2066,7 +2087,7 @@ p {
   }
 
   .hero__lead {
-    margin: 16px 0 18px;
+    margin: 16px 0 12px;
     font-size: 14px;
     line-height: 1.55;
   }
@@ -2382,3 +2403,17 @@ p {
   right: 18px;
 }
 
+
+.doctor__portrait .sound-toggle--corner {
+  top: 14px;
+  right: 14px;
+  height: 38px;
+  gap: 6px;
+  padding: 0 11px 0 9px;
+  font-size: 9px;
+}
+
+.doctor__portrait .sound-toggle svg {
+  width: 18px;
+  height: 18px;
+}
