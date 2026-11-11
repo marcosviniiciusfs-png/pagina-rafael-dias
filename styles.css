@@ -2460,21 +2460,21 @@ p {
 
 /* Efeito neon nos destaques do topo */
 .hero__content h1 em {
-  color: #ffd76a;
+  color: #ffd21a;
   text-shadow:
-    0 0 4px rgba(255, 215, 106, 0.9),
-    0 0 12px rgba(245, 197, 66, 0.75),
-    0 0 28px rgba(245, 197, 66, 0.55);
+    0 0 2px rgba(255, 210, 26, 0.9),
+    0 0 8px rgba(255, 196, 0, 0.75),
+    0 0 18px rgba(255, 186, 0, 0.5);
 }
 
 .hero__proof strong {
-  color: #ffe08a;
+  color: #ffd21a;
   text-shadow:
-    0 0 4px rgba(255, 224, 138, 0.95),
-    0 0 14px rgba(245, 197, 66, 0.8),
-    0 0 30px rgba(245, 197, 66, 0.6);
+    0 0 2px rgba(255, 210, 26, 0.95),
+    0 0 9px rgba(255, 196, 0, 0.8),
+    0 0 20px rgba(255, 186, 0, 0.55);
   -webkit-background-clip: border-box;
   background-clip: border-box;
   background: none;
-  -webkit-text-fill-color: #ffe08a;
+  -webkit-text-fill-color: #ffd21a;
 }
