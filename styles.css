@@ -2478,3 +2478,10 @@ p {
   background: none;
   -webkit-text-fill-color: #ffd21a;
 }
+
+/* Película mais forte só no celular */
+@media (max-width: 767px) {
+  .hero__veil {
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
