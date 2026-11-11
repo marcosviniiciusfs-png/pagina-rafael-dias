@@ -2344,7 +2344,7 @@ p {
 }
 
 .hero__veil {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.45);
 }
 
 /* Botão de som dos vídeos: só um vídeo com áudio por vez (controlado em app.js). */
