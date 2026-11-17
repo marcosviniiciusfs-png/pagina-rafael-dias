@@ -2485,3 +2485,18 @@ p {
     background: rgba(0, 0, 0, 0.6);
   }
 }
+
+/* Explicação da consulta no formulário de agendamento */
+.lead-modal__explain {
+  max-width: 470px;
+  margin: -14px 0 24px;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.lead-modal__explain strong,
+.lead-modal__tag {
+  color: var(--gold-dark);
+  font-weight: 600;
+}
