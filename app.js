@@ -576,7 +576,7 @@
       fbp: readCookie("_fbp"),
       fbc: readCookie("_fbc"),
     };
-    fetch("/api/leads", {
+    fetch(config.leadsEndpoint || "/api/leads", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),

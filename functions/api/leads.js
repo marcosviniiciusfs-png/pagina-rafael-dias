@@ -1,11 +1,33 @@
-const json = (body, status = 200) =>
+// Origens autorizadas a enviar leads (o site fica no GitHub Pages).
+const ALLOWED_ORIGINS = [
+  "https://institutorafaeldias.hurtzcompany.com",
+  "https://dr-rafael-dias.pages.dev",
+];
+
+const corsHeaders = (request) => {
+  const origin = request.headers.get("Origin") || "";
+  if (!ALLOWED_ORIGINS.includes(origin)) return {};
+  return {
+    "Access-Control-Allow-Origin": origin,
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Max-Age": "86400",
+    Vary: "Origin",
+  };
+};
+
+const json = (body, status = 200, headers = {}) =>
   Response.json(body, {
     status,
     headers: {
       "Cache-Control": "no-store",
       "X-Content-Type-Options": "nosniff",
+      ...headers,
     },
   });
+
+export const onRequestOptions = async ({ request }) =>
+  new Response(null, { status: 204, headers: corsHeaders(request) });
 
 const clean = (value, maxLength) => String(value ?? "").trim().slice(0, maxLength);
 
@@ -102,19 +124,20 @@ const sendLeadToSpreadsheet = async ({ env, lead }) => {
 };
 
 export const onRequestPost = async ({ request, env, waitUntil }) => {
+  const cors = corsHeaders(request);
   if (!request.headers.get("content-type")?.includes("application/json")) {
-    return json({ ok: false, error: "invalid_content_type" }, 415);
+    return json({ ok: false, error: "invalid_content_type" }, 415, cors);
   }
 
   let body;
   try {
     body = await request.json();
   } catch {
-    return json({ ok: false, error: "invalid_json" }, 400);
+    return json({ ok: false, error: "invalid_json" }, 400, cors);
   }
 
   // Campo invisível para bloquear envios automatizados simples.
-  if (clean(body.website, 200)) return json({ ok: true }, 201);
+  if (clean(body.website, 200)) return json({ ok: true }, 201, cors);
 
   const lead = {
     id: crypto.randomUUID(),
@@ -137,7 +160,7 @@ export const onRequestPost = async ({ request, env, waitUntil }) => {
 
   const phoneDigits = lead.phone.replace(/\D/g, "");
   if (lead.name.length < 2 || phoneDigits.length < 10 || !lead.interest || !lead.privacyConsent) {
-    return json({ ok: false, error: "invalid_lead" }, 422);
+    return json({ ok: false, error: "invalid_lead" }, 422, cors);
   }
 
   try {
@@ -175,10 +198,10 @@ export const onRequestPost = async ({ request, env, waitUntil }) => {
       waitUntil(sendLeadToSpreadsheet({ env, lead }));
     }
 
-    return json({ ok: true, leadId: lead.id, eventId }, 201);
+    return json({ ok: true, leadId: lead.id, eventId }, 201, cors);
   } catch (error) {
     console.error("lead_insert_failed", error);
-    return json({ ok: false, error: "storage_failed" }, 500);
+    return json({ ok: false, error: "storage_failed" }, 500, cors);
   }
 };
 

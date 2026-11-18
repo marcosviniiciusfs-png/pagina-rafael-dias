@@ -3,4 +3,5 @@ window.LP_CONFIG = {
   gtmId: "",
   clarityProjectId: "",
   metaPixelId: "788808816494984",
+  leadsEndpoint: "https://dr-rafael-dias.pages.dev/api/leads",
 };
