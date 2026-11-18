@@ -72,7 +72,7 @@ const sendMetaLead = async ({ env, request, lead, eventId, fbp, fbc }) => {
         event_source_url: lead.sourceUrl || request.headers.get("Referer") || undefined,
         action_source: "website",
         user_data: userData,
-        custom_data: { content_name: "Avaliação de full face", content_category: "Full Face" },
+        custom_data: { content_name: "Consulta de full face", content_category: "Full Face" },
       }],
     }),
   });

@@ -564,7 +564,7 @@
       name: values.name,
       phone: values.phone,
       email: values.email,
-      interest: values.motivation || values.selfCare || "Avaliação de full face",
+      interest: values.motivation || values.selfCare || "Consulta de full face",
       privacy_consent: values.privacy === "on",
       meta_consent: values.privacy === "on",
       utm_source: values.utm_source,
@@ -601,7 +601,7 @@
       `WhatsApp informado: ${values.phone}`,
       `E-mail: ${values.email}`,
       "",
-      "Perfil para avaliação:",
+      "Perfil para consulta:",
       `Faixa etária: ${values.ageRange}`,
       `Autocuidado: ${values.selfCare}`,
       `Motivação: ${values.motivation}`,
@@ -614,7 +614,7 @@
     const newWindow = window.open(destination, "_blank", "noopener,noreferrer");
     if (!newWindow) window.location.href = destination;
     track("generate_lead", { form: "evaluation", destination: "whatsapp" });
-    window.fbq?.("track", "Lead", { content_name: "Avaliação de full face" });
+    window.fbq?.("track", "Lead", { content_name: "Consulta de full face" });
     track("lead_handoff_whatsapp", { form: "evaluation", step_count: steps.length });
     formStatus.textContent = "O WhatsApp foi aberto. Continue a conversa por lá.";
     form.removeAttribute("aria-busy");
