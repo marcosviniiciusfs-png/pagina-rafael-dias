@@ -120,6 +120,7 @@ export const onRequestPost = async ({ request, env, waitUntil }) => {
     id: crypto.randomUUID(),
     name: clean(body.name, 120),
     phone: clean(body.phone, 30),
+    email: clean(body.email, 254),
     city: clean(body.city, 120),
     interest: clean(body.interest, 160),
     privacyConsent: body.privacy_consent === true,
@@ -135,7 +136,7 @@ export const onRequestPost = async ({ request, env, waitUntil }) => {
   const eventId = `lead_${lead.id}`;
 
   const phoneDigits = lead.phone.replace(/\D/g, "");
-  if (lead.name.length < 2 || phoneDigits.length < 10 || lead.city.length < 2 || !lead.interest || !lead.privacyConsent) {
+  if (lead.name.length < 2 || phoneDigits.length < 10 || !lead.interest || !lead.privacyConsent) {
     return json({ ok: false, error: "invalid_lead" }, 422);
   }
 
@@ -145,13 +146,14 @@ export const onRequestPost = async ({ request, env, waitUntil }) => {
         id, name, phone, email, city, interest, privacy_consent,
         utm_source, utm_medium, utm_campaign, utm_content, utm_term, source_url,
         meta_event_id, meta_consent, meta_capi_status, sheet_sync_status
-      ) VALUES (?, ?, ?, '', ?, ?, 1, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      ) VALUES (?, ?, ?, ?, ?, ?, 1, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     )
       .bind(
         lead.id,
         lead.name,
         lead.phone,
-        lead.city,
+        lead.email || "",
+        lead.city || null,
         lead.interest,
         lead.utmSource || null,
         lead.utmMedium || null,

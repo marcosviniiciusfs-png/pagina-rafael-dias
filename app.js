@@ -470,6 +470,13 @@
       if (name.value.trim().length < 2) return setError(name, "Informe seu nome completo para continuar.", errorElement);
       if (phone.value.replace(/\D/g, "").length < 10) return setError(phone, "Informe um WhatsApp com DDD.", errorElement);
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) return setError(email, "Informe um e-mail válido.", errorElement);
+      const privacy = form.elements.namedItem("privacy");
+      if (!privacy.checked) {
+        errorElement.textContent = "Marque a caixa de consentimento para continuar.";
+        privacy.focus();
+        return false;
+      }
+      errorElement.textContent = "";
       return true;
     }
 
@@ -546,6 +553,37 @@
     else phoneInput.value = digits.replace(/^(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
   });
 
+  const readCookie = (name) => {
+    const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
+    return match ? decodeURIComponent(match[1]) : "";
+  };
+
+  // Envia o lead para o banco (/api/leads). Não bloqueia a abertura do WhatsApp.
+  const sendLead = (values) => {
+    const payload = {
+      name: values.name,
+      phone: values.phone,
+      email: values.email,
+      interest: values.motivation || values.selfCare || "Avaliação de full face",
+      privacy_consent: values.privacy === "on",
+      meta_consent: values.privacy === "on",
+      utm_source: values.utm_source,
+      utm_medium: values.utm_medium,
+      utm_campaign: values.utm_campaign,
+      utm_content: values.utm_content,
+      utm_term: values.utm_term,
+      source_url: window.location.href,
+      fbp: readCookie("_fbp"),
+      fbc: readCookie("_fbc"),
+    };
+    fetch("/api/leads", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+      keepalive: true,
+    }).catch(() => {});
+  };
+
   form?.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!validateCurrentStep()) return;
@@ -555,6 +593,7 @@
     formStatus.textContent = "Abrindo o WhatsApp…";
 
     const values = Object.fromEntries(new FormData(form));
+    sendLead(values);
     const message = [
       "Olá! Acessei a página de Full Face do Instituto Rafael Dias e gostaria de falar com a equipe.",
       "",

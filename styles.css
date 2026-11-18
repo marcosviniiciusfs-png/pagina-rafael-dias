@@ -2523,3 +2523,27 @@ p {
 .results__cta .button--white {
   min-width: 220px;
 }
+
+/* Caixa de consentimento do formulário */
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 16px 0 4px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.consent input {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--gold-dark);
+}
+
+.consent a {
+  color: var(--gold-dark);
+}

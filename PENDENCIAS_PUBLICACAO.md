@@ -38,7 +38,7 @@ Confirmar o registro exibido (`CRBM-5217/PA`) na consulta pública do conselho p
 - Se houver integração, documentar endpoint, autenticação, tratamento de falhas, retenção e responsáveis.
 - Confirmar mensagem inicial, horário de atendimento e SLA da equipe.
 - Configurar um único container GTM em `config.js`; o valor está vazio por segurança.
-- O Pixel da Meta `2258593511572731` está configurado com consentimento prévio. Configurar GA4, Google Ads ou TikTok somente com IDs próprios e usando a mesma regra de consentimento para tecnologias não essenciais.
+- O Pixel da Meta `788808816494984` está configurado com consentimento prévio. Configurar GA4, Google Ads ou TikTok somente com IDs próprios e usando a mesma regra de consentimento para tecnologias não essenciais.
 - Preservar a regra de não enviar dados pessoais ao `dataLayer`.
 
 ## 5. Privacidade e publicação técnica — bloqueante

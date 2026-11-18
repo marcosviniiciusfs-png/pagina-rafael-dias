@@ -1,10 +1,18 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "dr-rafael-dias",
-  "pages_build_output_dir": "./dist",
+  "pages_build_output_dir": ".",
   "compatibility_date": "2026-09-03",
   "vars": {
-    "META_PIXEL_ID": "2258593511572731",
+    "META_PIXEL_ID": "788808816494984",
     "META_GRAPH_API_VERSION": "v25.0"
-  }
+  },
+  "d1_databases": [
+    {
+      "binding": "LEADS_DB",
+      "database_name": "dr-rafael-leads",
+      "database_id": "9136050f-89f6-4041-8b5f-66700932e6f0",
+      "migrations_dir": "migrations"
+    }
+  ]
 }

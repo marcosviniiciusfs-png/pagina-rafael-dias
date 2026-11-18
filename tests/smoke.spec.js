@@ -5,7 +5,7 @@ test("renders the complete landing page without horizontal overflow", async ({ p
   await page.goto("/?utm_source=ig&utm_medium=social&utm_content=qa");
   await expect(page).toHaveTitle(/Rafael Dias/);
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Quando você ama seu reflexo");
-  await expect(page.locator("main section")).toHaveCount(7);
+  await expect(page.locator("main section")).toHaveCount(8);
 
   for (const width of [360, 390, 768, 1024, 1440]) {
     await page.setViewportSize({ width, height: width < 768 ? 844 : 1000 });
@@ -43,6 +43,7 @@ test("opens, validates and sends the qualified lead to WhatsApp", async ({ page 
   await page.locator("#lead-name").fill("Paciente Teste");
   await page.locator("#lead-phone").fill("94991360408");
   await page.locator("#lead-email").fill("paciente@exemplo.com");
+  await page.locator("#lead-privacy").check();
   await page.locator(".form-next").click();
   await page.getByLabel("30 a 39 anos").check();
   await page.locator(".form-next").click();
@@ -75,7 +76,7 @@ test("loads Meta Pixel and PageView immediately", async ({ page }) => {
   await expect(page.locator("#cookie-consent")).toHaveCount(0);
   await expect(page.locator('script[src="https://connect.facebook.net/en_US/fbevents.js"]')).toHaveCount(1);
   await expect.poll(() =>
-    page.evaluate(() => window.fbq?.queue?.some((args) => args[0] === "init" && args[1] === "2258593511572731")),
+    page.evaluate(() => window.fbq?.queue?.some((args) => args[0] === "init" && args[1] === "788808816494984")),
   ).toBe(true);
   await expect.poll(() => page.evaluate(() => window.fbq?.queue?.some((args) => args[0] === "track" && args[1] === "PageView"))).toBe(true);
 });
